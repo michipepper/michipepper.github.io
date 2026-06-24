@@ -385,6 +385,36 @@ a.link:hover, .prose a:hover, p a:hover {
   .case-meta { gap: 20px; }
 }
 
+/* ========== ACCESSIBILITY ========== */
+/* Visible keyboard focus, scoped to keyboard users via :focus-visible */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--link-hover);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link — hidden until focused via keyboard */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
 /* ========== UTIL ========== */
 .subtle { color: var(--muted); }
 .pill {
