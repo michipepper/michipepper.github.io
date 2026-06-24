@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://michipepper.github.io/</loc><priority>1.0</priority></url>
   <url><loc>https://michipepper.github.io/resume.html</loc><priority>0.8</priority></url>
+  <url><loc>https://michipepper.github.io/writings.html</loc><priority>0.8</priority></url>
   <url><loc>https://michipepper.github.io/projects/ai-native-payroll.html</loc><priority>0.7</priority></url>
   <url><loc>https://michipepper.github.io/projects/longterm-care-startup.html</loc><priority>0.7</priority></url>
   <url><loc>https://michipepper.github.io/projects/dipendenti-in-cloud.html</loc><priority>0.7</priority></url>

@@ -25,15 +25,28 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="container nav">
-    <nav class="nav-inner">
-      <a href="../index.html">Work</a>
+  <header class="site-header">
+    <a href="../index.html" class="site-masthead">Michela D&rsquo;Urso</a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="nav-work" aria-expanded="false" aria-controls="work-list">Work</button>
+      <ul class="work-list" id="work-list">
+        <li><a href="../projects/ai-native-payroll.html">AI-native payroll</a></li>
+        <li><a href="../projects/longterm-care-startup.html">Long-term care startup</a></li>
+        <li><a href="../projects/dipendenti-in-cloud.html">Dipendenti in Cloud</a></li>
+        <li><a href="../projects/teamsystem-hr.html">TeamSystem HR</a></li>
+        <li><a href="../projects/cnh-lms.html">CNH Web Academy</a></li>
+        <li><a href="../projects/albertina.html">Albertina Academy</a></li>
+        <li><a href="../projects/nicer.html">Nicer</a></li>
+      </ul>
       <a href="../resume.html">Resume</a>
-      <a href="mailto:dursomichela01@gmail.com">Contact</a>
+      <a href="../writings.html">Writings</a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="https://linkedin.com/in/dursomichela" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://michipepper.substack.com" target="_blank" rel="noopener">Substack</a>
     </nav>
   </header>
 
-  <main class="container" id="main">
+  <main class="site-content" id="main">
     <header class="case-header">
       <h1 class="case-title">Nicer &mdash; discount codes, right when you need them</h1>
       <p class="case-subtitle">A B2C mobile app designed from concept to MVP. Solving a small but real frustration: finding the right promo code at the right time.</p>
@@ -65,7 +78,7 @@
     </article>
   </main>
 
-  <footer class="container footer">
+  <footer class="site-footer footer">
     <div class="footer-inner">
       <a href="../index.html">&larr; Back to work</a>
       <span class="sep">/</span>
@@ -74,5 +87,6 @@
       <a href="https://linkedin.com/in/dursomichela" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>
+  <script src="../assets/js/nav.js"></script>
 </body>
 </html>
