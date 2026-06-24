@@ -176,6 +176,7 @@ a.link:hover, .prose a:hover, p a:hover {
 .entry {
   padding: 32px 0;
   border-top: 1px solid var(--rule);
+  max-width: 640px;
 }
 
 .entry:first-child {
@@ -244,6 +245,7 @@ a.link:hover, .prose a:hover, p a:hover {
   padding: 48px 0 32px;
   border-bottom: 1px solid var(--rule);
   margin-bottom: 40px;
+  max-width: 640px;
 }
 
 .case-title {
@@ -334,7 +336,6 @@ a.link:hover, .prose a:hover, p a:hover {
 .footer {
   margin-top: 96px;
   padding: 32px 0 48px;
-  border-top: 1px solid var(--rule);
   font-family: var(--sans);
   font-size: 14px;
   color: var(--muted);
@@ -345,6 +346,9 @@ a.link:hover, .prose a:hover, p a:hover {
   gap: 8px;
   flex-wrap: wrap;
   align-items: center;
+  max-width: 640px;
+  border-top: 1px solid var(--rule);
+  padding-top: 32px;
 }
 
 .footer a {
@@ -451,7 +455,7 @@ button:focus-visible,
 }
 
 /* Homepage: name + intro live in the header, masthead omitted */
-.site-intro { max-width: 680px; }
+.site-intro { max-width: 680px; margin-top: 64px; }
 .site-intro .hero-name { margin-bottom: 1.3rem; }
 .site-content > .section-label:first-child { margin-top: 0; }
 
@@ -552,9 +556,7 @@ button:focus-visible,
 
 .site-footer {
   margin-top: 96px;
-  padding-top: 32px;
   padding-bottom: 48px;
-  border-top: 1px solid var(--rule);
   font-family: var(--sans);
   font-size: 14px;
   color: var(--muted);
@@ -573,7 +575,7 @@ button:focus-visible,
 .writing {
   padding: 28px 0;
   border-top: 1px solid var(--rule);
-  max-width: 680px;
+  max-width: 640px;
 }
 
 .writing:first-child { border-top: none; padding-top: 8px; }
@@ -618,6 +620,7 @@ button:focus-visible,
     margin-bottom: 36px;
   }
   .site-nav { position: static; top: auto; right: auto; align-items: flex-start; text-align: left; width: 100%; }
+  .site-intro { margin-top: 24px; }
   .work-list { align-items: flex-start; }
   .nav-divider { align-self: stretch; width: 100%; }
   .site-header,
