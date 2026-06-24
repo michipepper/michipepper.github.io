@@ -466,12 +466,14 @@ button:focus-visible,
 
 .site-masthead .site-section { color: var(--muted); }
 
-/* Right-side vertical nav — absolute so the Work accordion never
-   pushes the page content down; it stays its own column on the right. */
+/* Right-side vertical nav — fixed so it stays in place on scroll and the
+   Work accordion never pushes the page content down. Right offset tracks
+   the centered content column instead of the raw viewport edge. */
 .site-nav {
-  position: absolute;
+  position: fixed;
   top: 36px;
-  right: 32px;
+  right: max(32px, calc((100vw - 1180px) / 2 + 32px));
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
