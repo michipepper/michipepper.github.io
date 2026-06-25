@@ -635,8 +635,7 @@ button:focus-visible,
 .entry-cover .img-placeholder { aspect-ratio: 16 / 9; }
 .entry-cover img {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
   border-radius: 8px;
   display: block;
 }
@@ -646,8 +645,7 @@ button:focus-visible,
 .project-figure .img-placeholder { aspect-ratio: 3 / 2; }
 .project-figure img {
   width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
+  height: auto;
   border-radius: 8px;
   display: block;
 }
@@ -663,8 +661,7 @@ button:focus-visible,
   max-width: min(880px, calc(100vw - 260px));
   margin-top: 1.6rem;
 }
-.project-cover .img-placeholder,
-.project-cover img { aspect-ratio: 16 / 9; }
+.project-cover .img-placeholder { aspect-ratio: 16 / 9; }
 .case-header:has(+ .project-cover) {
   border-bottom: none;
   margin-bottom: 20px;
