@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Designing what payroll software looks like when AI sits inside the workflow, not bolted on top. A case study by Michela D&rsquo;Urso.">
+  <meta name="description" content="Designing what payroll software looks like when AI sits inside the workflow, not bolted on top. An anonymized case study by Michela D&rsquo;Urso.">
   <link rel="canonical" href="https://michipepper.github.io/projects/ai-native-payroll.html">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <meta name="theme-color" content="#f7f5f0">
   <meta property="og:type" content="article">
   <meta property="og:title" content="An AI-native product for payroll &mdash; Michela D&rsquo;Urso">
-  <meta property="og:description" content="Designing what payroll software looks like when AI sits inside the workflow, not bolted on top. A case study by Michela D&rsquo;Urso.">
+  <meta property="og:description" content="Designing what payroll software looks like when AI sits inside the workflow, not bolted on top. An anonymized case study by Michela D&rsquo;Urso.">
   <meta property="og:url" content="https://michipepper.github.io/projects/ai-native-payroll.html">
   <meta property="og:image" content="https://michipepper.github.io/assets/images/og-cover.png">
   <meta property="og:site_name" content="Michela D&rsquo;Urso">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="An AI-native product for payroll &mdash; Michela D&rsquo;Urso">
-  <meta name="twitter:description" content="Designing what payroll software looks like when AI sits inside the workflow, not bolted on top. A case study by Michela D&rsquo;Urso.">
+  <meta name="twitter:description" content="Designing what payroll software looks like when AI sits inside the workflow, not bolted on top. An anonymized case study by Michela D&rsquo;Urso.">
   <meta name="twitter:image" content="https://michipepper.github.io/assets/images/og-cover.png">
   <title>An AI-native product for payroll &mdash; Michela D'Urso</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260624d">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260624h">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -53,54 +53,68 @@
       <div class="case-meta">
         <div class="case-meta-item">
           <span class="case-meta-label">Role</span>
-          <span class="case-meta-value">Product Designer (team of 3)</span>
+          <span class="case-meta-value">Product Designer and Builder</span>
         </div>
         <div class="case-meta-item">
           <span class="case-meta-label">Industry</span>
-          <span class="case-meta-value">AI-Native B2B SaaS &middot; HR / Payroll</span>
+          <span class="case-meta-value">AI-Native B2B SaaS &middot; HR Payroll</span>
         </div>
         <div class="case-meta-item">
           <span class="case-meta-label">Year</span>
-          <span class="case-meta-value">2025 &mdash; Now</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Status</span>
-          <span class="case-meta-value">Active &middot; pre-launch</span>
+          <span class="case-meta-value">2026 &mdash; Now</span>
         </div>
       </div>
     </header>
 
+    <figure class="project-figure project-cover">
+      <span class="img-placeholder">ai-native-payroll-cover.png</span>
+    </figure>
+
     <article class="prose">
+      <p class="subtle"><em>This is a real project, shown in an anonymized form. Product name, brand, proprietary flows and most data are under NDA &mdash; the screens below are a redesigned, demo version with placeholder data, made to show the thinking without exposing anything confidential.</em></p>
+
       <h2>The bet</h2>
-      <p>Payroll software in Italy is built around a very specific user: the <em>consulente del lavoro</em> &mdash; the labor consultant who manages payroll for dozens of client companies, navigates ever-changing regulations, and lives inside spreadsheets and legacy interfaces. The tools they use today are powerful but unforgiving. They reward expertise and punish almost everything else.</p>
-      <p>The bet behind this product is that AI changes the shape of the workflow itself &mdash; not just the UI on top of it. If a labor consultant could converse with the software, ask it to draft, check, and explain things, the whole product surface needs to be rethought from the ground up.</p>
-      <p>I joined this initiative inside TeamSystem in 2025, as part of a three-person design team. We&rsquo;re building this in close collaboration with product, engineering, and domain experts.</p>
+      <p>In Italy, payroll software is built for one demanding user: the <em>consulente del lavoro</em>. A single consultant runs payroll for dozens of client companies, tracks regulation that changes monthly, and works across legacy screens that reward expertise and punish almost everything else.</p>
+      <p>The bet is narrow and testable: <strong>AI shouldn&rsquo;t sit in a side panel &mdash; it should change the shape of the task.</strong> The real design challenge isn&rsquo;t the model, it&rsquo;s the user&rsquo;s role: moving consultants and payroll specialists <strong>from operators to supervisors</strong> of work the AI does. That only works if the human stays in the loop and trusts the output &mdash; so every screen has to earn that trust.</p>
+      <p>I joined an experimental team in 2026 to help build one of the first AI-native payroll products in Italy, working alongside product, engineering, and domain experts.</p>
 
-      <h2>Where I&rsquo;ve focused</h2>
-      <p>The product spans many surfaces &mdash; here&rsquo;s what I&rsquo;ve owned or co-owned so far.</p>
+      <h2>A few things we designed</h2>
+      <p>Three flows, each taken from problem to working prototype &mdash; and each built around the same principle: <em>AI proposes, the expert decides.</em></p>
 
-      <h3>Information architecture for the new anagrafica</h3>
-      <p>The <em>anagrafica</em> (employee, company, and branch registries) is the foundation of any payroll product &mdash; and the most data-dense part. I mapped the full IA across three core screens (<em>Scheda azienda</em>, <em>Scheda filiale</em>, <em>Scheda dipendente</em>), defining tab structures, field clusters, and a custom &ldquo;UI reuse&rdquo; status to track which components carried over from the legacy system and which needed to be redesigned for the AI-native experience.</p>
-      <p>This work was the bridge between the legacy AZE platform and the new product &mdash; tagging fields with MEP/MVP priorities across ten tabs, and aligning the team on what shipped first.</p>
+      <h3>1. An entry point organized by intent, not by modules</h3>
+      <p>The home screen replaces a dashboard of modules with one composer (&ldquo;type or dictate &mdash; use @ to pick a company or an employee&rdquo;) and two layers of scaffolding underneath. <strong>Quick actions</strong> name what the product can do; <strong>proactive suggestions</strong> surface the day&rsquo;s real work, pulled from the consultant&rsquo;s own book of business &mdash; &ldquo;5 companies with record changes to handle&rdquo;, &ldquo;2 companies ready for automated payslip verification&rdquo; &mdash; each card tagged with the client it touches.</p>
+      <p>The decision underneath: an expert tool can&rsquo;t open on a blank chat box. The suggestions do double duty &mdash; they teach the surface <em>and</em> front-load the work, so the first screen is already useful, not just inviting.</p>
 
-      <h3>Rapid prototyping with AI-assisted tools</h3>
-      <p>To validate IA hypotheses and navigation logic in days instead of weeks, I built interactive prototypes using <strong>Claude Code</strong> and <strong>Figma Make</strong>. One prototype covered the multi-level navigation (company &rarr; branch &rarr; employee), a four-step employee-creation modal, breadcrumb logic, and the topbar/sidebar shell pulled from the Figma design kit.</p>
-      <p>The prototypes weren&rsquo;t throwaway. They became a shared artifact the team could click through, react to, and challenge &mdash; which moved decisions forward faster than static mockups could have.</p>
+      <figure class="project-figure">
+        <span class="img-placeholder">ai-native-payroll-entry.png</span>
+        <figcaption>Entry point &mdash; one composer plus client-tagged suggestions turn the home screen into the day&rsquo;s worklist.</figcaption>
+      </figure>
 
-      <h3>AI conversation design</h3>
-      <p>The most strategic part of the work: figuring out what AI <em>actually does</em> inside the product. Not chatbot answers &mdash; but how a conversation with the software helps a labor consultant generate, for example, a UniEmens declaration, or check that a contract aligns with the latest regulation (think ViDA and similar regulatory shifts).</p>
-      <p>I researched AI applications in payroll workflows specifically, and explored conversation patterns suited to expert users who don&rsquo;t want a friendly assistant &mdash; they want a precise, fast, accountable collaborator.</p>
+      <h3>2. Document extraction with side-by-side review</h3>
+      <p>Onboarding a new client means building its company record from an official registry document &mdash; the most data-dense step in the flow. I designed it as a <strong>two-pane review</strong>: source document on the left, structured record on the right. The AI states what it did in plain language, gives a short summary, and ends on an explicit decision &mdash; <em>do you want to proceed?</em></p>
+      <p>This is the supervisor pattern in miniature: every field stays editable before saving, the source stays visible for cross-checking, and the terminal actions are unambiguous. No silent autofill; no trust without verification.</p>
 
-      <h3>UX decision-making frameworks</h3>
-      <p>I also worked on a few foundational UX questions that come up over and over in a product like this: when to use a full-page modal vs. a drawer, how to apply progressive disclosure to dense data, and how to balance power-user shortcuts with onboarding clarity. These small decisions add up &mdash; in a tool experts will live inside for hours a day, they define whether the product feels respectful of their time or not.</p>
+      <figure class="project-figure">
+        <span class="img-placeholder">ai-native-payroll-extraction.png</span>
+        <figcaption>Extraction with review &mdash; source and extracted record side by side, editable fields, and an explicit confirm step before saving.</figcaption>
+      </figure>
+
+      <h3>3. A generated deliverable the consultant can actually send</h3>
+      <p>A plain request (&ldquo;show me this client&rsquo;s cost trend, Q1&rdquo;) becomes a <strong>client-ready report</strong> on the consultant&rsquo;s own letterhead: total cost, breakdown by component, and a chart by month &mdash; rendered in the company&rsquo;s custom template, with one fixed action: <em>send to client as attachment</em>.</p>
+      <p>Two decisions defined this screen. The chat-side summary is a <strong>decision aid, not a wall of text</strong> &mdash; the headline number, the breakdown, and an offer to go deeper. And the output is treated as a real artifact, not a chat bubble: a fixed header and a fixed action bar frame the scrollable document, so a deliverable always looks like a deliverable.</p>
+
+      <figure class="project-figure">
+        <span class="img-placeholder">ai-native-payroll-report.png</span>
+        <figcaption>Generated deliverable &mdash; a branded, client-ready report; the chat summary stays a quick decision aid.</figcaption>
+      </figure>
 
       <h2>How we work</h2>
-      <p>This is a small team operating with a builder mindset. We move fast, we prototype early, we let the work speak. I sit at the intersection of product design and product management &mdash; mapping IA, writing specs, defining acceptance criteria, prioritizing alongside the PM, and keeping the connection between design decisions and what gets shipped.</p>
-      <p>Process is light. The output is what matters.</p>
+      <p>Small team, builder mindset, <strong>AI-driven process</strong> end to end. We use AI tools across the whole lifecycle &mdash; from ideation and brainstorming through development &mdash; and we ship to learn: <strong>build, test, learn</strong>, without waiting for perfection to show the work. To validate IA and conversation logic in days, I built clickable prototypes with <strong>Claude Code</strong> and <strong>Figma Make</strong>, so the team could react to a real flow instead of a static mockup.</p>
+      <p>I sit at the intersection of product design and product management &mdash; mapping IA, writing specs and acceptance criteria, prioritizing MVP scope with the PM, and keeping the line tight between a design decision and what ships.</p>
 
-      <h2>Why this matters</h2>
-      <p>This product is one of the most strategic initiatives in its category inside the company &mdash; and one of the few real attempts to design payroll software AI-first rather than AI-bolted-on. The opportunity isn&rsquo;t the AI itself; it&rsquo;s rethinking the whole product surface around it.</p>
-      <p>Working on it has sharpened how I think about AI-native architecture, conversation design, and what it means to design software for experts in an AI-first world.</p>
+      <h2>Why it matters</h2>
+      <p>This is one of the few genuine attempts to design payroll software <strong>AI-first, not AI-bolted-on</strong> &mdash; and the work is as much about people as pixels: helping experts evolve into supervisors of AI without losing authorship of the result.</p>
+      <p>It&rsquo;s the same instinct that led me to start a long-term-care venture inside the Politecnico di Torino incubator (i3P): I build things meant to have real impact on people &mdash; products, but also services and initiatives.</p>
 
       <p class="subtle" style="margin-top: 3rem; font-size: 14px;"><em>Some details and visuals are under NDA. Happy to walk through specifics in a conversation.</em></p>
     </article>
@@ -115,6 +129,6 @@
       <a href="https://linkedin.com/in/dursomichela" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>
-  <script src="../assets/js/nav.js?v=20260624d"></script>
+  <script src="../assets/js/nav.js?v=20260624h"></script>
 </body>
 </html>

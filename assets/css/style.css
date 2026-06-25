@@ -176,8 +176,10 @@ a.link:hover, .prose a:hover, p a:hover {
 .entry {
   padding: 32px 0;
   border-top: 1px solid var(--rule);
-  max-width: 640px;
+  max-width: min(880px, calc(100vw - 260px));
 }
+
+.entry-body { max-width: 640px; }
 
 .entry:first-child {
   border-top: none;
@@ -611,6 +613,63 @@ button:focus-visible,
   max-width: 600px;
 }
 
+/* ========== IMAGE PLACEHOLDERS ========== */
+.img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--bg-alt);
+  border: 1px dashed #c4c0b4;
+  border-radius: 6px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  padding: 10px;
+  word-break: break-word;
+}
+
+/* Cover image under each work entry (title + description above it) */
+.entry-cover { display: block; margin-top: 20px; }
+.entry-cover .img-placeholder { aspect-ratio: 16 / 9; }
+.entry-cover img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Figures inside a project case study */
+.project-figure { max-width: 640px; margin: 2.2rem 0; }
+.project-figure .img-placeholder { aspect-ratio: 3 / 2; }
+.project-figure img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+.project-figure figcaption {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* Cover image — larger (880px), sits under the title + description.
+   Capped so it never slides under the fixed right-side nav on scroll. */
+.project-cover {
+  max-width: min(880px, calc(100vw - 260px));
+  margin-top: 1.6rem;
+}
+.project-cover .img-placeholder,
+.project-cover img { aspect-ratio: 16 / 9; }
+.case-header:has(+ .project-cover) {
+  border-bottom: none;
+  margin-bottom: 20px;
+}
+
 /* Right-nav layout — mobile */
 @media (max-width: 640px) {
   .site-header {
@@ -627,4 +686,6 @@ button:focus-visible,
   .site-content,
   .site-footer { padding-left: 20px; padding-right: 20px; }
   .writing-title { font-size: 1.25rem; }
+  .entry { max-width: 100%; }
+  .project-cover { max-width: 100%; }
 }
