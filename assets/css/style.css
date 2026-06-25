@@ -334,6 +334,27 @@ a.link:hover, .prose a:hover, p a:hover {
   color: var(--muted);
 }
 
+/* ========== CTA BUTTON ========== */
+.cta-row {
+  margin: 2rem 0 0.5rem;
+}
+a.cta {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+a.cta:hover {
+  background: var(--link-hover);
+  color: var(--bg);
+}
+
 /* ========== FOOTER ========== */
 .footer {
   margin-top: 96px;
@@ -709,7 +730,9 @@ button:focus-visible,
   line-height: 1.35;
   color: #5b3df5;
   margin: 2.5rem 0;
-}/* ========== CNH CASE — KPI cards ========== */
+}
+
+/* ========== CNH CASE — KPI cards ========== */
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -759,6 +782,9 @@ button:focus-visible,
   font-size: 16px;
   line-height: 1.6;
 }
+
+/* CNH page only — orange accents instead of the site purple */
+.page-cnh .pull-statement { color: #c4630a; }
 
 @media (max-width: 640px) {
   .kpi-grid { grid-template-columns: 1fr; }
