@@ -14,7 +14,6 @@ Static site, no build step. Deploy via GitHub Pages.
 │   ├── ai-native-payroll.html
 │   ├── longterm-care-startup.html
 │   ├── dipendenti-in-cloud.html
-│   ├── teamsystem-hr.html
 │   ├── cnh-lms.html
 │   ├── albertina.html
 │   └── nicer.html

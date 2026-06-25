@@ -33,7 +33,6 @@
         <li><a href="../projects/ai-native-payroll.html">AI-native payroll</a></li>
         <li><a href="../projects/longterm-care-startup.html">Long-term care startup</a></li>
         <li><a href="../projects/dipendenti-in-cloud.html">Dipendenti in Cloud</a></li>
-        <li><a href="../projects/teamsystem-hr.html">TeamSystem HR</a></li>
         <li><a href="../projects/cnh-lms.html">CNH Web Academy</a></li>
         <li><a href="../projects/albertina.html">Albertina Academy</a></li>
         <li><a href="../projects/nicer.html">Nicer</a></li>
@@ -49,15 +48,19 @@
   <main class="site-content" id="main">
     <header class="case-header">
       <h1 class="case-title">Building a startup in long-term care</h1>
-      <p class="case-subtitle">A two-sided marketplace and workforce-management tool for small and mid-sized residential care facilities. From foggy idea to product hypothesis.</p>
+      <p class="case-subtitle">A two-sided marketplace and workforce-management tool for small and mid-sized residential care facilities. From a problem felt first-hand to a product hypothesis &mdash; told mostly through how I got there.</p>
       <div class="case-meta">
         <div class="case-meta-item">
           <span class="case-meta-label">Role</span>
-          <span class="case-meta-value">Founder</span>
+          <span class="case-meta-value">Founder &middot; Product &amp; Design</span>
         </div>
         <div class="case-meta-item">
           <span class="case-meta-label">Industry</span>
           <span class="case-meta-value">Healthcare &middot; Marketplace &middot; Workforce Mgmt</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Context</span>
+          <span class="case-meta-value">i3P Startup Academy &mdash; Polito</span>
         </div>
         <div class="case-meta-item">
           <span class="case-meta-label">Year</span>
@@ -66,24 +69,30 @@
       </div>
     </header>
 
-    <figure class="project-figure project-cover">
-      <span class="img-placeholder">longterm-care-01.png</span>
-    </figure>
-
     <article class="prose">
+      <p class="subtle"><em>An early-stage solution hypothesis, built as the closing deliverable of the i3P Startup Academy &mdash; not a validated product. The next, and primary, step is validating the problem in the market. I&rsquo;m sharing this work because it shows the <strong>method</strong>: how I drove the project forward on my own, which is what says the most about how I work.</em></p>
+
       <h2>The problem</h2>
       <p>Italy has an aging population and a structural shortage of healthcare workers. Small and mid-sized residential care facilities (RSAs) live with three problems at once: high turnover among nurses and caregivers, chronic under-staffing of daily shifts, and personnel management that&rsquo;s still done on paper, WhatsApp, and Excel.</p>
       <p>When a coordinator gets a sick-call at 6am, they don&rsquo;t have a tool &mdash; they have a phone and a list of names. That&rsquo;s the gap.</p>
 
-      <h2>The product hypothesis</h2>
-      <p>A two-sided marketplace that matches RSAs with verified, available healthcare operators &mdash; combined with a lightweight workforce-management layer for shift planning, certifications, and personnel records. AI sits in the background where it earns its place: in recruiting, matching, and possibly later as a copilot for shift management.</p>
-      <p>The product isn&rsquo;t about being clever. It&rsquo;s about removing twenty phone calls a week.</p>
+      <blockquote class="pull-quote">
+        &ldquo;The task that weighs on me most is managing the shifts. I call it a trauma.&rdquo;
+        <cite>&mdash; Giuseppina, Lead caregiver (OSS), public RSA, 60 beds</cite>
+      </blockquote>
 
       <h2>What I&rsquo;ve done so far</h2>
+      <p>As a solo founder &mdash; no PM to align with, no backlog to inherit &mdash; every step was mine to set up. It&rsquo;s the part of this story that actually matters.</p>
 
       <h3>Discovery, not pitching</h3>
       <p>I&rsquo;ve run stakeholder interviews with RSA directors, coordinators, nurses, and OSS (socio-sanitary operators). Not to validate my idea &mdash; to understand whether the problem is as real as I think, and where the actual workflow breaks.</p>
       <p>I built a reusable qualitative research skill to synthesize transcripts: extracting insights, verbatim quotes, KPIs, and product implications across interviews. The output is a structured insight framework that drives every product decision, instead of a folder of unread notes.</p>
+
+      <figure class="project-figure">
+        <img src="../assets/images/longterm-care-research-skill.png" alt="Qualitative research skill — synthesizing interview transcripts into insights, quotes, KPIs, and product implications">
+
+        <figcaption>A reusable research skill &mdash; transcripts synthesized into insights, verbatim quotes, KPIs, and product implications, instead of a folder of unread notes.</figcaption>
+      </figure>
 
       <h3>Market sizing the honest way</h3>
       <p>I worked through TAM/SAM/SOM analysis for the Italian RSA market &mdash; not to make a pitch deck look impressive, but to understand whether this is a real opportunity or a niche that won&rsquo;t support a business. The answer turned out to be more interesting than I expected.</p>
@@ -91,11 +100,29 @@
       <h3>i3P Startup Academy</h3>
       <p>I&rsquo;m currently inside the <a href="https://www.i3p.it/" target="_blank" rel="noopener">i3P Startup Academy</a> at Politecnico di Torino &mdash; their pre-incubation program. It&rsquo;s a chance to validate the product hypothesis seriously, with mentorship, structure, and a deadline.</p>
 
+      <h2>The product hypothesis</h2>
+      <p>All of this produced a first hypothesis: <strong>Thedora</strong>, a two-sided marketplace matching RSAs with verified, available healthcare operators &mdash; combined with a lightweight workforce-management layer. AI sits in the background where it earns its place: in matching, credential verification, and later as a copilot for shift coverage.</p>
+      <p>Two problems, two modules: <strong>Thedora Shifts</strong> (shift planning) and <strong>Thedora Network</strong> (absence coverage through a marketplace of freelance professionals).</p>
+
+      <figure class="project-figure">
+        <img src="../assets/images/longterm-care-shifts.png" alt="Thedora Shifts — shift-planning module for RSAs">
+
+        <figcaption>Thedora Shifts &mdash; shift planning that replaces the 6am scramble of phone calls and WhatsApp messages.</figcaption>
+      </figure>
+
+      <figure class="project-figure">
+        <img src="../assets/images/longterm-care-network.png" alt="Thedora Network — marketplace covering absences through freelance healthcare professionals">
+
+        <figcaption>Thedora Network &mdash; covering absences through a marketplace of verified, available freelance professionals.</figcaption>
+      </figure>
+
+      <p class="pull-statement">The product isn&rsquo;t about being clever. It&rsquo;s about removing twenty phone calls a week.</p>
+
       <h2>What this is teaching me</h2>
       <p>Building from zero is different from designing inside a product team. There&rsquo;s no PM to align with, no backlog to inherit, no roadmap someone else owns. Every choice &mdash; product, business model, AI strategy, who to talk to next &mdash; sits with you.</p>
       <p>It&rsquo;s also the cleanest way I&rsquo;ve found to grow as a product builder. Speed isn&rsquo;t a buzzword when you&rsquo;re funding your own time. Ownership isn&rsquo;t a soft skill when there&rsquo;s no one else.</p>
 
-      <p class="subtle" style="margin-top: 3rem; font-size: 14px;"><em>The startup is operating in stealth. Happy to share more in a conversation under NDA.</em></p>
+      <p class="subtle" style="margin-top: 3rem; font-size: 14px;"><em>Some numbers and details are intentionally omitted. Happy to share more in a conversation.</em></p>
     </article>
   </main>
 
