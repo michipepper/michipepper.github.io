@@ -1,8 +1,6 @@
 # Michela D'Urso — Personal Site
 
-Personal portfolio of Michela D'Urso, Product Designer & Builder based in Milan.
-
-Static site, no build step. Deploy via GitHub Pages.
+portfolio of Michela D'Urso, Product Designer & Builder based in Milan.
 
 ## Structure
 
