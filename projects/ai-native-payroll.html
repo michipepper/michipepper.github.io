@@ -6,7 +6,7 @@
   <meta name="description" content="Designing payroll software where AI lives inside the workflow, not bolted on top. An anonymized case study by Michela D&rsquo;Urso.">
   <link rel="canonical" href="https://michipepper.github.io/projects/ai-native-payroll.html">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <meta name="theme-color" content="#f7f5f0">
+  <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="article">
   <meta property="og:title" content="An AI-native product for payroll &mdash; Michela D&rsquo;Urso">
   <meta property="og:description" content="Designing payroll software where AI lives inside the workflow, not bolted on top. An anonymized case study by Michela D&rsquo;Urso.">
@@ -21,7 +21,301 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260625c">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260710b">
+  <style>
+  /* ===== AI-native payroll case study — fully scoped under .pcase so it never touches the shared header/nav/footer ===== */
+  .pcase{
+    --paper:#f5f6f7; --paper-2:#e6e8eb; --card:#fbfcfd;
+    --ink:#12151a; --ink-2:#3e4550; --muted:#676b6f;
+    --line:rgba(20,26,34,.10); --line-2:rgba(20,26,34,.20);
+    --violet:#4B33D9; --violet-soft:#EDE9FF; --amber:#a85566; --green:#3C6B24;
+    background:var(--paper); color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-size:16px; line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    font-feature-settings:"ss01","cv11";
+  }
+  .pcase *{box-sizing:border-box}
+
+  /* This page: hero flows straight into the value proposition — no divider, same background */
+  .case-header{border-bottom:none;margin-bottom:0}
+
+  .pcase .wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+  .pcase .wrap-tight{max-width:900px;margin:0 auto;padding:0 40px}
+
+  /* typography */
+  .pcase .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+  .pcase .kicker{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+  .pcase .kicker.muted{color:var(--muted)}
+  .pcase .kicker.violet{color:var(--violet)}
+  .pcase h1{font-family:'Inter';font-weight:600;letter-spacing:-.03em;line-height:.98;margin:0}
+  .pcase h2{font-family:'Inter';font-weight:600;letter-spacing:-.025em;line-height:1.05;margin:0}
+  .pcase h3{font-family:'Inter';font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:0}
+  .pcase h4{font-family:'Inter';font-weight:600;letter-spacing:-.01em;line-height:1.2;margin:0}
+  .pcase p{margin:0 0 14px}
+  .pcase p.body{font-size:17px;line-height:1.6;color:var(--ink-2);max-width:60ch}
+  .pcase p.body strong{color:var(--ink);font-weight:600}
+  .pcase p.lede{font-size:20px;line-height:1.5;color:var(--ink-2);max-width:56ch}
+  .pcase a{color:var(--violet);text-decoration:none;border-bottom:1px solid rgba(75,51,217,.25);transition:border-color .15s}
+  .pcase a:hover{border-bottom-color:var(--violet)}
+
+  /* section rhythm */
+  .pcase section{padding:96px 0}
+  .pcase section.tight{padding:64px 0}
+  .pcase section.first{padding-top:8px}
+  .pcase hr.rule{height:1px;background:var(--line);border:0;margin:0}
+
+  /* value prop */
+  .pcase .block-title{margin-bottom:32px}
+  .pcase .block-title .kicker{margin-bottom:12px;display:block}
+  .pcase .block-title h2{font-size:48px;max-width:24ch}
+  .pcase .valueprop{background:transparent;border:0}
+  .pcase .valueprop .kicker{display:block;margin-bottom:24px}
+  .pcase .vp-divider{height:1px;background:var(--line);border:0;margin:0 0 28px;width:100%}
+  .pcase .valueprop .statement{font-size:44px;line-height:1.08;letter-spacing:-.022em;max-width:24ch;font-weight:500;color:var(--ink)}
+  .pcase .valueprop .statement .em{color:var(--violet);font-weight:600}
+  .pcase .valueprop .foot{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:56px;padding-top:32px;border-top:1px solid var(--line)}
+  .pcase .valueprop .foot p{font-size:15.5px;line-height:1.6;color:var(--ink-2);margin:0}
+
+  /* metrics */
+  .pcase .metrics{padding:96px 0}
+  .pcase .metrics-row{display:flex;gap:20px;flex-wrap:wrap;align-items:stretch}
+  .pcase .metric-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;max-width:190px;display:flex;flex-direction:column;justify-content:center}
+  .pcase .metric-card .mn{font-size:32px;font-weight:500;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px;line-height:1}
+  .pcase .metric-card .ml{font-size:13px;line-height:1.4;color:var(--ink-2)}
+  .pcase .metric-card .ml strong{color:var(--ink);font-weight:500}
+
+  /* user profiles */
+  .pcase .users-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+  .pcase .users-head .block-title h2{font-size:48px;max-width:20ch}
+  .pcase .users-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+  .pcase .user-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 28px 28px}
+  .pcase .user-card h3{font-size:26px;margin-bottom:14px}
+  .pcase .user-card p{font-size:15px;line-height:1.55;color:var(--ink-2);margin:0 0 16px}
+  .pcase .user-card .needs{padding-top:20px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pcase .user-card .needs .need{font-size:13px;line-height:1.4;color:var(--ink-2)}
+  .pcase .user-card .needs .need strong{color:var(--ink);font-weight:500;display:block;font-size:12px;margin-bottom:2px}
+  .pcase .interaction{margin-top:56px;padding:40px 40px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+  .pcase .interaction .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+  .pcase .interaction p{font-size:16px;line-height:1.6;color:var(--ink-2);margin:0;max-width:70ch}
+  .pcase .interaction p strong{color:var(--ink);font-weight:600}
+
+  /* screen section */
+  .pcase .screen-section{padding:96px 0}
+  .pcase .screen-section:nth-of-type(even){background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pcase .screen-head{margin-bottom:40px;max-width:64ch}
+  .pcase .screen-head .kicker{margin-bottom:14px;display:block}
+  .pcase .screen-head h3{font-size:38px;margin-bottom:18px;max-width:22ch}
+  .pcase .screen-head p{font-size:17px;line-height:1.6;color:var(--ink-2);max-width:56ch;margin:0 0 12px}
+  .pcase .screen-frame{background:#e7eaed;border:1px solid var(--line);border-radius:14px;padding:20px;position:relative;box-shadow:0 30px 60px rgba(15,20,32,.06)}
+  .pcase .screen-frame::before{content:attr(data-note);position:absolute;top:-10px;left:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--paper);padding:2px 10px;border:1px solid var(--line);border-radius:4px}
+  .pcase .screen-section:nth-of-type(even) .screen-frame::before{background:var(--card)}
+  .pcase .screen-detail{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px}
+  .pcase .screen-detail .txt p{font-size:15.5px;line-height:1.6;color:var(--ink-2);margin:0 0 12px;max-width:44ch}
+  .pcase .screen-detail .txt p strong{color:var(--ink);font-weight:600}
+  .pcase .screen-detail .bullets{list-style:none;padding:0;margin:16px 0 0}
+  .pcase .screen-detail .bullets li{padding:12px 0 12px 24px;position:relative;font-size:14.5px;line-height:1.55;color:var(--ink-2);border-top:1px solid var(--line)}
+  .pcase .screen-detail .bullets li:last-child{border-bottom:1px solid var(--line)}
+  .pcase .screen-detail .bullets li::before{content:"";position:absolute;left:0;top:19px;width:12px;height:1px;background:var(--violet)}
+  .pcase .screen-detail .bullets li strong{color:var(--ink);font-weight:600;display:block;margin-bottom:2px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-family:'JetBrains Mono',monospace}
+
+  /* quote */
+  .pcase .quote{margin-top:24px;padding:20px 24px;background:var(--paper);border:1px solid var(--line);border-radius:10px;font-size:15.5px;line-height:1.5;color:var(--ink);font-style:italic}
+  .pcase .screen-section:nth-of-type(even) .quote{background:var(--card)}
+  .pcase .quote .qt::before{content:"\00AB";color:var(--violet);font-style:normal;font-weight:500;margin-right:4px;font-size:20px}
+  .pcase .quote .qt::after{content:"\00BB";color:var(--violet);font-style:normal;font-weight:500;margin-left:4px;font-size:20px}
+  .pcase .quote .attr{display:block;margin-top:12px;font-style:normal;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+  /* product mock shell */
+  .pcase .app{background:#fff;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:40px 230px 1fr;grid-template-rows:46px 1fr;height:100%;border:1px solid rgba(15,20,32,.08);box-shadow:0 1px 0 rgba(255,255,255,.4) inset}
+  .pcase .app.canvas{grid-template-columns:40px 230px .9fr 1.3fr}
+  .pcase .app.canvas .main{grid-column:3/4}
+  .pcase .app.canvas .canvas-panel{grid-column:4/5;grid-row:2;background:#FBFBFA;border-left:1px solid var(--line);padding:16px 18px;overflow:hidden;display:flex;flex-direction:column}
+  .pcase .app.compact{grid-template-columns:1fr}
+  .pcase .app.compact .main{grid-column:1/2}
+  .pcase .app.compact.canvas{grid-template-columns:.9fr 1.3fr}
+  .pcase .app.compact.canvas .main{grid-column:1/2}
+  .pcase .app.compact.canvas .canvas-panel{grid-column:2/3;grid-row:2}
+  .pcase .app .topbar{grid-column:1/-1;background:#fff;color:var(--ink);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 14px;font-size:12px}
+  .pcase .app .topbar .hb{font-size:14px;color:var(--muted)}
+  .pcase .app .topbar .bm{width:20px;height:20px;border-radius:5px;background:linear-gradient(135deg,#7C5CFF,#4B33D9);display:grid;place-items:center}
+  .pcase .app .topbar .bm svg{width:11px;height:11px}
+  .pcase .app .topbar .name{font-weight:600;font-size:12px;color:var(--ink)}
+  .pcase .app .topbar .name em{font-style:normal;color:var(--violet)}
+  .pcase .app .topbar .breadcrumb{color:var(--muted);font-size:11.5px;margin-left:8px}
+  .pcase .app .topbar .spacer{flex:1}
+  .pcase .app .topbar .ic{color:var(--muted);font-size:13px}
+  .pcase .app .topbar .chip{background:var(--paper);border:1px solid var(--line);padding:4px 8px;border-radius:6px;font-size:10.5px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
+  .pcase .app .topbar .chip .dt{width:12px;height:12px;border-radius:50%;background:#8b96a3}
+  .pcase .app .topbar .avatar{width:20px;height:20px;border-radius:50%;background:#cdd5dd}
+  .pcase .app .rail{background:#14122A;padding:12px 8px;display:flex;flex-direction:column;gap:10px;align-items:center}
+  .pcase .app .rail .r{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
+  .pcase .app .sidebar{background:#fff;border-right:1px solid var(--line);padding:14px 12px;font-size:12px;color:var(--ink-2);overflow:hidden}
+  .pcase .app .sidebar .newchat{color:var(--violet);padding:0 0 10px;font-weight:500;font-size:11.5px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .pcase .app .sidebar .newchat::before{content:"\270E";font-size:11px}
+  .pcase .app .sidebar .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:6px 2px;font-size:10.5px;color:var(--ink-2);margin-bottom:8px}
+  .pcase .app .sidebar .toggle{width:26px;height:14px;border-radius:999px;background:var(--line-2);position:relative;flex-shrink:0}
+  .pcase .app .sidebar .toggle::after{content:"";position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:#fff}
+  .pcase .app .sidebar .search{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:10.5px;color:var(--muted);margin-bottom:10px}
+  .pcase .app .sidebar .sitem{padding:4px 2px;font-size:10.8px;color:var(--ink-2);display:flex;align-items:center;gap:6px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pcase .app .sidebar .sitem.active{color:var(--ink);font-weight:500}
+  .pcase .app .sidebar .label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin:10px 2px 5px}
+  .pcase .app .main{background:#fff;padding:26px 30px;overflow:hidden}
+  .pcase .app .main h5{font-size:24px;text-align:center;margin:12px 0 4px;color:var(--ink);font-weight:500;letter-spacing:-.015em}
+  .pcase .app .main h5 em{font-style:normal;color:var(--violet);font-weight:600}
+  .pcase .app .main .subtitle{text-align:center;color:var(--muted);font-size:10.5px;margin-bottom:16px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+  .pcase .app .main .prompt{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--muted);font-size:11.5px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .pcase .app .main .prompt .improve{color:var(--violet);font-weight:500;font-size:10.5px}
+  .pcase .app .main .chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:22px}
+  .pcase .app .main .c{border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:10.5px;color:var(--violet);background:#fff}
+  .pcase .app .main .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .pcase .app .main .grid.two{grid-template-columns:1fr 1fr}
+  .pcase .app .main .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px}
+  .pcase .app .main .card .badge{align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:var(--violet-soft);color:var(--violet)}
+  .pcase .app .main .card .t{font-size:11.5px;line-height:1.35;color:var(--ink);font-weight:500}
+  .pcase .app .main .card .b{align-self:flex-start;font-size:10px;color:var(--violet);border:1px solid var(--line);border-radius:6px;padding:4px 7px}
+  .pcase .app .main .heading{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin:0 0 10px;color:var(--ink)}
+
+  /* chat-style main */
+  .pcase .app .main.chat{padding:18px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
+  .pcase .app .main.chat .bubble-user{align-self:flex-end;background:var(--violet-soft);color:var(--ink);padding:8px 12px;border-radius:10px 10px 2px 10px;font-size:11.5px;max-width:88%;line-height:1.4}
+  .pcase .app .main.chat .file-chip{align-self:flex-end;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:10.5px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .pcase .app .main.chat .file-chip .ic{width:18px;height:18px;border-radius:4px;background:var(--violet-soft);display:grid;place-items:center;font-size:9px}
+  .pcase .app .main.chat .ai{font-size:11.5px;line-height:1.6;color:var(--ink-2)}
+  .pcase .app .main.chat .ai .spark{color:var(--violet);margin-right:4px}
+  .pcase .app .main.chat .ai strong{color:var(--ink);font-weight:600}
+  .pcase .app .main.chat .reasoning{font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:5px;margin:2px 0}
+  .pcase .app .main.chat .reasoning::before{content:"\203A";display:inline-block;transform:rotate(90deg)}
+  .pcase .app .main.chat .ref-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px 11px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink);font-weight:500}
+  .pcase .app .main.chat .ref-card .ic{width:20px;height:20px;border-radius:5px;background:var(--paper);display:grid;place-items:center;font-size:10px;flex-shrink:0}
+  .pcase .app .main.chat .ref-card small{display:block;color:var(--muted);font-weight:400;font-size:9.5px;margin-top:1px}
+  .pcase .app .main.chat .ref-card .aitag{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--violet);background:var(--violet-soft);padding:2px 5px;border-radius:3px;flex-shrink:0}
+  .pcase .app .main.chat .draft-list{display:flex;flex-direction:column;gap:6px;margin:2px 0}
+  .pcase .app .main.chat .summary-box{background:#eef0f3;border-radius:8px;padding:10px 12px;font-size:11px;color:var(--ink);line-height:1.6}
+
+  /* tabs */
+  .pcase .tabs{display:flex;gap:4px;margin-bottom:12px}
+  .pcase .tabs .tab{font-size:10.5px;padding:5px 10px;border-radius:6px;color:var(--muted);font-weight:500}
+  .pcase .tabs .tab.active{background:var(--violet-soft);color:var(--violet)}
+
+  /* doc preview */
+  .pcase .doc-preview{background:#eceef1;border-radius:8px;padding:10px;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%}
+  .pcase .doc-preview .page{background:#fff;border:1px solid var(--line);border-radius:4px;width:100%;padding:10px;box-shadow:0 4px 10px rgba(15,20,32,.05)}
+  .pcase .doc-preview .page .stripe{height:8px;background:#8a94a1;border-radius:2px;margin-bottom:5px}
+  .pcase .doc-preview .page .ln{height:3px;background:#e1e4e8;border-radius:2px;margin:3px 0}
+  .pcase .doc-preview .page .ln.short{width:55%}
+  .pcase .doc-preview .pager{font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+  /* field table */
+  .pcase .field-table{display:flex;flex-direction:column;gap:0}
+  .pcase .field-table .fr{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:10.5px}
+  .pcase .field-table .fr .k{color:var(--muted)}
+  .pcase .field-table .fr .v{color:var(--ink);font-weight:500;text-align:right}
+  .pcase .field-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+  .pcase .field-actions .btn{font-size:11px;padding:7px 14px;border-radius:6px;font-weight:500}
+  .pcase .field-actions .btn.ghost{color:var(--muted)}
+  .pcase .field-actions .btn.solid{background:var(--violet);color:#fff}
+
+  /* canvas panel */
+  .pcase .canvas-panel .cp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .pcase .canvas-panel .cp-title{font-size:12px;font-weight:600;color:var(--ink)}
+  .pcase .canvas-panel .cp-title em{font-style:normal;color:var(--violet);font-weight:500}
+  .pcase .canvas-panel .cp-cta{margin-top:14px;padding:10px 12px;background:var(--violet);color:#fff;border-radius:6px;font-size:11.5px;font-weight:500;text-align:center}
+  .pcase .canvas-panel .cp-cta.ghost{background:#fff;color:var(--violet);border:1px solid var(--violet)}
+
+  /* post-payroll checklist */
+  .pcase .checklist{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+  .pcase .checklist .ch-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+  .pcase .checklist .ch-head .l{color:var(--ink);font-weight:500}
+  .pcase .checklist .ch-head .r{color:var(--muted)}
+  .pcase .ch-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .pcase .ch-row:last-child{border-bottom:none}
+  .pcase .ch-row .l{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--ink)}
+  .pcase .ch-row .l .bullet{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--muted);flex-shrink:0}
+  .pcase .ch-row .l .bullet.done{background:var(--green);border-color:var(--green);position:relative}
+  .pcase .ch-row .l .bullet.done::after{content:"\2713";color:#fff;font-size:9px;position:absolute;top:-1px;left:2px}
+  .pcase .ch-row .l .bullet.active{border-color:var(--violet);background:var(--violet-soft);position:relative}
+  .pcase .ch-row .l .bullet.active::after{content:"";width:6px;height:6px;background:var(--violet);border-radius:50%;position:absolute;top:2px;left:2px}
+  .pcase .ch-row .l small{color:var(--muted);font-size:10px;display:block;margin-top:1px}
+  .pcase .ch-row .r{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+  .pcase .ch-row .r .tag{padding:2px 6px;border-radius:3px;background:#e7eaed;color:var(--ink-2)}
+  .pcase .ch-row .r .tag.warn{background:#FFF6E8;color:#7A5A20}
+  .pcase .ch-row .r .action{color:var(--violet);font-weight:500}
+
+  /* smart payslip */
+  .pcase .payslip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;box-shadow:0 8px 24px rgba(15,20,32,.04)}
+  .pcase .payslip .ps-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .pcase .payslip .ps-title{font-size:14px;font-weight:600;color:var(--ink)}
+  .pcase .payslip .ps-title em{background:var(--violet-soft);color:var(--violet);font-style:normal;font-size:10px;font-weight:600;padding:2px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;letter-spacing:.04em}
+  .pcase .payslip .ps-meta{font-size:10.5px;color:var(--muted);text-align:right;line-height:1.4}
+  .pcase .payslip .net{background:#14122A;color:#EDE9FF;padding:14px;border-radius:8px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .pcase .payslip .net .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,233,255,.6);font-family:'JetBrains Mono',monospace}
+  .pcase .payslip .net .amt{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:2px;color:#F6F2FF}
+  .pcase .payslip .net .r{font-size:9.5px;color:#A99BFF;text-align:right;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+  .pcase .payslip .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+  .pcase .payslip .cell{background:#eef0f3;border-radius:6px;padding:10px}
+  .pcase .payslip .cell .k{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'JetBrains Mono',monospace;margin-bottom:4px}
+  .pcase .payslip .cell .v{font-size:14px;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+  .pcase .payslip .cell .v.neg{color:var(--amber)}
+  .pcase .payslip .cell .v.pos{color:var(--green)}
+  .pcase .payslip .narrative{background:var(--violet-soft);border:1px solid rgba(75,51,217,.15);border-radius:8px;padding:12px}
+  .pcase .payslip .narrative .tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+  .pcase .payslip .narrative .tag::before{content:"\2727"}
+  .pcase .payslip .narrative p{font-size:11.5px;line-height:1.55;color:var(--ink);margin:0}
+
+  /* report doc */
+  .pcase .report-doc{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;height:100%;overflow:hidden}
+  .pcase .report-doc .r-head{display:flex;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .pcase .report-doc .r-brand{font-size:13px;font-weight:600;color:var(--ink)}
+  .pcase .report-doc .r-brand em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-top:2px}
+  .pcase .report-doc .r-info{font-size:9.5px;color:var(--muted);text-align:right;line-height:1.5;font-family:'JetBrains Mono',monospace}
+  .pcase .report-doc .r-title{font-size:14px;font-weight:600;color:var(--ink);margin:8px 0}
+  .pcase .report-doc .r-body{font-size:10.5px;line-height:1.6;color:var(--ink-2);margin-bottom:12px}
+  .pcase .report-doc .r-chart{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+  .pcase .report-doc .r-chart .r-bar{display:grid;grid-template-columns:60px 1fr 60px;gap:8px;align-items:center;font-size:10px}
+  .pcase .report-doc .r-chart .r-lbl{color:var(--muted);text-transform:uppercase;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.06em}
+  .pcase .report-doc .r-chart .r-track{height:14px;background:#e6e9ee;border-radius:3px;overflow:hidden;display:flex}
+  .pcase .report-doc .r-chart .r-track .sg{height:100%}
+  .pcase .report-doc .r-chart .r-track .sg.a{background:#4B33D9}
+  .pcase .report-doc .r-chart .r-track .sg.b{background:#7C5CFF}
+  .pcase .report-doc .r-chart .r-track .sg.c{background:#B9A9FF}
+  .pcase .report-doc .r-chart .r-val{color:var(--ink);font-weight:600;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px}
+
+  /* rules grid */
+  .pcase .rules-section{padding:112px 0}
+  .pcase .rules-section .head{margin-bottom:64px;max-width:64ch}
+  .pcase .rules-section .head p{font-size:17px;line-height:1.6;color:var(--ink-2);max-width:56ch;margin-top:16px}
+  .pcase .rules-row{margin-bottom:56px}
+  .pcase .rules-row:last-child{margin-bottom:0}
+  .pcase .rules-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  .pcase .rules-grid.four{grid-template-columns:repeat(4,1fr)}
+  .pcase .rule{padding:24px 20px 22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .pcase .rule .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--violet);margin-bottom:14px}
+  .pcase .rule h4{font-size:16px;margin-bottom:8px;letter-spacing:-.01em;color:var(--ink)}
+  .pcase .rule p{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin:0}
+
+  /* responsive */
+  @media (max-width:1000px){
+    .pcase .wrap,.pcase .wrap-tight{padding:0 24px}
+    .pcase section{padding:72px 0}
+    .pcase .block-title h2,.pcase .valueprop .statement{font-size:36px}
+    .pcase .users-grid{grid-template-columns:1fr}
+    .pcase .valueprop .foot{grid-template-columns:1fr;gap:24px}
+    .pcase .screen-detail{grid-template-columns:1fr;gap:32px}
+    .pcase .rules-grid,.pcase .rules-grid.four{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){
+    .pcase section{padding:56px 0}
+    .pcase .block-title h2,.pcase .valueprop .statement{font-size:28px}
+    .pcase .rules-grid,.pcase .rules-grid.four{grid-template-columns:1fr}
+    .pcase .screen-frame{padding:12px}
+    .pcase .interaction{padding:24px 20px}
+    .pcase .app,.pcase .app.canvas,.pcase .app.compact.canvas{grid-template-columns:1fr;grid-auto-rows:auto}
+    .pcase .app .rail,.pcase .app .sidebar{display:none}
+    .pcase .app.canvas .canvas-panel,.pcase .app.compact.canvas .canvas-panel{grid-column:1;grid-row:auto;border-left:none;border-top:1px solid var(--line)}
+  }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -37,7 +331,8 @@
         <li><a href="../projects/albertina.html">Albertina Academy</a></li>
         <li><a href="../projects/nicer.html">Nicer</a></li>
       </ul>
-      <a href="../resume.html">Resume</a>
+      <a href="../about.html">About me</a>
+      <a href="../assets/Michela_DUrso_CV_2026.pdf" target="_blank" rel="noopener">Resume</a>
       <a href="../writings.html">Writings</a>
       <span class="nav-divider" aria-hidden="true"></span>
       <a href="https://linkedin.com/in/dursomichela" target="_blank" rel="noopener">LinkedIn</a>
@@ -48,7 +343,7 @@
   <main class="site-content" id="main">
     <header class="case-header">
       <h1 class="case-title">An AI-native product for payroll</h1>
-      <p class="case-subtitle">Designing payroll software where AI lives inside the workflow &mdash; not bolted on top.</p>
+      <p class="case-subtitle">Designing payroll software where AI lives inside the workflow, from research to a validated conversational prototype.</p>
       <div class="case-meta">
         <div class="case-meta-item">
           <span class="case-meta-label">Role</span>
@@ -64,66 +359,717 @@
         </div>
       </div>
     </header>
-
-    <article class="prose">
-      <p class="subtle"><em>A real project, shown anonymized. Product name, brand, and proprietary flows are under NDA. The screens below are a redesigned demo with placeholder data &mdash; enough to show the thinking, nothing confidential.</em></p>
-
-      <h2>The bet</h2>
-      <p>In Italy, payroll software serves one demanding user: the <em>consulente del lavoro</em>. One consultant runs payroll for dozens of client companies, tracks regulation that shifts monthly, and works across legacy screens that reward expertise and punish everything else.</p>
-      <p>The bet is narrow and testable: <strong>AI shouldn&rsquo;t sit in a side panel &mdash; it should change the shape of the task.</strong> The hard part isn&rsquo;t the model, it&rsquo;s the user&rsquo;s role: moving consultants and payroll specialists <strong>from operators to supervisors</strong> of work the AI does. That only holds if the human stays in the loop and trusts the output &mdash; so every screen has to earn that trust.</p>
-      <p>I joined an experimental team in 2026 to help build one of Italy&rsquo;s first AI-native payroll products, alongside product, engineering, and domain experts.</p>
-      
-<figure class="project-figure">
-        <img loading="lazy" src="../assets/images/ai-native-concept.png" alt="Concept overview of the AI-native payroll product — the core flows and how AI proposes while the expert decides">
-
-        <figcaption>The concept at a glance &mdash; one surface where AI proposes and the consultant stays the decision-maker.</figcaption>
-      </figure>
-
-      <h2>A few things we designed</h2>
-      <p>Three flows, each taken from problem to working prototype, all built on one principle: <em>AI proposes, the expert decides.</em></p>
-
-
-      <h3>1. An entry point organized by intent, not by modules</h3>
-      <p>The home screen drops the module dashboard for one composer (&ldquo;type or dictate &mdash; use @ to pick a company or an employee&rdquo;) over two layers of scaffolding. <strong>Quick actions</strong> name what the product can do; <strong>proactive suggestions</strong> surface the day&rsquo;s real work, pulled from the consultant&rsquo;s own book of business &mdash; &ldquo;5 companies with record changes to handle&rdquo;, &ldquo;2 companies ready for automated payslip verification&rdquo; &mdash; each card tagged with the client it touches.</p>
-      <p>The call underneath: an expert tool can&rsquo;t open on a blank chat box. The suggestions do double duty &mdash; they teach the surface <em>and</em> front-load the work, so the first screen is useful, not just inviting.</p>
-
-      <figure class="project-figure">
-        <img loading="lazy" src="../assets/images/ai-native-payroll-entry.png" alt="Entry point — a single composer with client-tagged proactive suggestions on the home screen">
-
-        <figcaption>Entry point &mdash; one composer plus client-tagged suggestions turn the home screen into the day&rsquo;s worklist.</figcaption>
-      </figure>
-
-      <h3>2. Document extraction with side-by-side review</h3>
-      <p>Onboarding a client means building its company record from an official registry document &mdash; the most data-dense step in the flow. I designed it as a <strong>two-pane review</strong>: source document left, structured record right. The AI states what it did in plain language, gives a short summary, and ends on one explicit decision &mdash; <em>proceed?</em></p>
-      <p>This is the supervisor pattern in miniature: every field editable before saving, the source visible for cross-checking, terminal actions unambiguous. No silent autofill. No trust without verification.</p>
-
-      <figure class="project-figure">
-        <img loading="lazy" src="../assets/images/ai-native-payroll-extraction.png" alt="Document extraction — source document and structured record shown side by side, with editable fields">
-
-        <figcaption>Extraction with review &mdash; source and extracted record side by side, editable fields, an explicit confirm step before saving.</figcaption>
-      </figure>
-
-      <h3>3. A generated deliverable the consultant can actually send</h3>
-      <p>A plain request (&ldquo;show me this client&rsquo;s cost trend, Q1&rdquo;) becomes a <strong>client-ready report</strong> on the consultant&rsquo;s own letterhead: total cost, breakdown by component, a chart by month &mdash; rendered in the company&rsquo;s template, with one fixed action: <em>send to client as attachment</em>.</p>
-      <p>Two decisions shaped this screen. The chat-side summary is a <strong>decision aid, not a wall of text</strong> &mdash; headline number, breakdown, an offer to go deeper. And the output is treated as a real artifact, not a chat bubble: fixed header, fixed action bar, scrollable document. A deliverable should look like a deliverable.</p>
-
-      <figure class="project-figure">
-        <img loading="lazy" src="../assets/images/ai-native-payroll-report.png" alt="Generated client-ready report on the company's letterhead, with a chart and cost breakdown">
-
-        <figcaption>Generated deliverable &mdash; a branded, client-ready report; the chat summary stays a quick decision aid.</figcaption>
-      </figure>
-
-      <h2>How we work</h2>
-      <p>Small team, builder mindset, <strong>AI-driven end to end</strong>. We use AI tools across the whole lifecycle &mdash; ideation through development &mdash; and ship to learn: <strong>build, test, learn</strong>, without waiting for perfection. To validate IA and conversation logic in days, I built clickable prototypes in <strong>Claude Code</strong> and <strong>Figma Make</strong>, so the team could react to a real flow, not a static mockup.</p>
-      <p>I sit between product design and product management &mdash; mapping IA, writing specs and acceptance criteria, prioritizing MVP scope with the PM, keeping the line tight between a design decision and what ships.</p>
-
-      <h2>Why it matters</h2>
-      <p>This is one of the few real attempts to design payroll software <strong>AI-first, not AI-bolted-on</strong> &mdash; and the work is as much about people as pixels: helping experts become supervisors of AI without losing authorship of the result.</p>
-      <p>Same instinct that led me to start a long-term-care venture inside the Politecnico di Torino incubator (i3P): I build things meant to have real impact on people &mdash; products, but also services and initiatives.</p>
-
-      <p class="subtle" style="margin-top: 3rem; font-size: 14px;"><em>Some details and visuals are under NDA. Happy to walk through specifics in a conversation.</em></p>
-    </article>
   </main>
+
+  <div class="pcase">
+
+    <!-- 01 · INTRO + VALUE PROPOSITION -->
+    <section class="valueprop tight first">
+      <div class="wrap">
+        <hr class="vp-divider">
+        <div class="statement">
+          A conversational workspace that helps professionals manage
+          the entire payroll cycle, freeing them from repetitive tasks
+          thanks to <span class="em">reliable data</span>.
+        </div>
+        <p class="body" style="margin-top:32px;max-width:70ch">
+          A mature payroll calculation engine &mdash; used by thousands of payroll
+          consultants and specialists in Italy &mdash; had inherited a front-end of
+          hundreds of forms and parameter tables, unchanged for a decade. The goal
+          was to design an AI-native experience on top of the existing engine.
+        </p>
+        <div class="foot">
+          <p>
+            <strong style="color:var(--ink)">The product</strong> assists from pre-payroll
+            data collection through to post-payroll compliance: payslip processing,
+            anomaly detection, reporting, employee communications.
+          </p>
+          <p>
+            <strong style="color:var(--ink)">The paradigm shift</strong> is from
+            doing-per-screen to asking-in-language: the AI orchestrates, the consultant
+            decides, the engine calculates. Each at its own level.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 1 · WELCOME PAGE -->
+    <section class="screen-section">
+      <div class="wrap">
+        <div class="screen-head">
+          <h3>The homepage is<br>a single request.</h3>
+          <p>
+            No dashboard, no sidebar menus multiplying. A free-form prompt with
+            <strong>intent chips</strong> for recurring payroll actions, and a block
+            of <strong>AI Suggestions</strong> that anticipates the state of the
+            portfolio &mdash; upcoming deadlines, record changes, payslips ready to
+            validate. Search and the library stay within reach, but they aren't
+            the main path.
+          </p>
+        </div>
+
+        <div class="screen-frame" data-note="Welcome / Homepage">
+          <div class="app" style="height:560px">
+            <div class="topbar">
+              <span class="hb">&#9776;</span>
+              <div class="bm">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-6 6-6 9 0s6 6 9 0" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg>
+              </div>
+              <div class="name">Payroll<em>AI</em></div>
+              <div class="spacer"></div>
+              <span class="ic">?</span>
+              <span class="ic">&#9881;</span>
+              <div class="chip">Bianchi Studio <span class="dt"></span></div>
+              <div class="avatar"></div>
+              <span class="ic">&#9638;</span>
+            </div>
+            <div class="rail">
+              <div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div>
+            </div>
+            <div class="sidebar">
+              <div class="newchat">New conversation</div>
+              <div class="toggle-row"><span>Client conversations</span><span class="toggle"></span></div>
+              <div class="search">&#128269; Search</div>
+              <div class="sitem">Verdi payslip processing...</div>
+              <div class="sitem">April payslip processing</div>
+              <div class="sitem">Compliance deadlines...</div>
+              <div class="sitem">New hire cost simulation...</div>
+              <div class="sitem">Employee record entry...</div>
+              <div class="sitem">Q1 labor cost report</div>
+              <div class="sitem">March attendance management</div>
+              <div class="sitem">Accrued severance check</div>
+              <div class="sitem">Salary transfer setup...</div>
+            </div>
+            <div class="main">
+              <h5>Payroll<em>AI</em> welcomes you</h5>
+              <div class="subtitle">I'm here to help on PayrollAI</div>
+              <div class="prompt">
+                <span>Write or dictate something. Type @ to select a company or an employee.</span>
+                <span class="improve">&#9998; Improve</span>
+              </div>
+              <div class="chips">
+                <span class="c">Manage records</span>
+                <span class="c">Process payslips</span>
+                <span class="c">Start post-payroll</span>
+                <span class="c">Manage tasks and deadlines</span>
+                <span class="c">Create simulations and reports</span>
+                <span class="c">Analyze data</span>
+                <span class="c">Show client status</span>
+                <span class="c">&#8943; More options</span>
+              </div>
+              <div class="heading">Suggested by PayrollAI</div>
+              <div class="grid">
+                <div class="card">
+                  <div class="t">5 companies with record changes to review</div>
+                  <div class="b">Manage records</div>
+                </div>
+                <div class="card">
+                  <div class="t">3 deadlines due by tomorrow</div>
+                  <div class="b">Help me manage tasks</div>
+                </div>
+                <div class="card">
+                  <div class="t">2 companies ready for automatic payslip verification</div>
+                  <div class="b">Verify payslips</div>
+                </div>
+                <div class="card">
+                  <div class="t">Attendance, movements and events received on 04/02</div>
+                  <div class="b">Start payslip processing</div>
+                </div>
+                <div class="card">
+                  <div class="t">20 companies affected by a regulatory update</div>
+                  <div class="b">Check the impact</div>
+                </div>
+                <div class="card">
+                  <div class="t">3 completed companies ready for salary transfers</div>
+                  <div class="b">Send transfers</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="screen-detail">
+          <div class="txt">
+            <p>
+              The homepage's structure came out of a single observation: in
+              interviews, the first move every morning was always <strong>"what do
+              I need to do today?"</strong>. The old system forced people to infer
+              it from tabs, counters, manual checks in Excel files. The new one is
+              declarative &mdash; the AI reads the state and proposes.
+            </p>
+          </div>
+          <div>
+            <ul class="bullets">
+              <li><strong>A single entry point</strong>No classic dashboard. Benefit: focus. Cost: an expert user initially loses their visual reference points. Mitigated with onboarding and by keeping recent items persistent.</li>
+              <li><strong>Intent chips vs. free-form prompt</strong>Both coexist. The expert types, the junior clicks. Neither feels like they're using a "reduced" mode.</li>
+              <li><strong>Proactive suggestions</strong>The AI surfaces possible actions without executing them. The consultant remains the decision-maker &mdash; no action ever runs on its own.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · USERS + KPIS -->
+    <section>
+      <div class="wrap">
+        <div class="users-head">
+          <div class="block-title" style="margin-bottom:0">
+            <h2>Who it's for,<br>how they use it.</h2>
+          </div>
+          <div class="metrics-row">
+            <div class="metric-card">
+              <div class="mn">3k</div>
+              <div class="ml">Payslips processed per month</div>
+            </div>
+            <div class="metric-card">
+              <div class="mn">&minus;70%</div>
+              <div class="ml">Time on repetitive data entry <strong>(target)</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="users-grid">
+          <div class="user-card">
+            <h3>Payroll consultant</h3>
+            <p>
+              Holds the professional and legal responsibility for a portfolio of
+              client companies. Coordinates the firm's payroll specialists,
+              oversees regulatory updates, signs off on compliance filings. Their
+              time is worth more spent on advisory work than on execution.
+            </p>
+            <div class="needs">
+              <div class="need"><strong>Cross-portfolio</strong>Single view of client status</div>
+              <div class="need"><strong>Advisory</strong>On-demand reports, tax incentives</div>
+              <div class="need"><strong>Compliance</strong>Contextual regulatory updates</div>
+              <div class="need"><strong>Audit</strong>Traceability of every AI output</div>
+            </div>
+          </div>
+          <div class="user-card">
+            <h3>Payroll specialist</h3>
+            <p>
+              Runs the monthly cycle end-to-end &mdash; from attendance collection to
+              archiving. Zero-error under time pressure, with data arriving
+              fragmented (email, WhatsApp, attachments). The AI needs to structure
+              the input and verify the output.
+            </p>
+            <div class="needs">
+              <div class="need"><strong>Monthly cycle</strong>Processing, reconciliation, submission</div>
+              <div class="need"><strong>Anomalies</strong>Priority triage, not alert fatigue</div>
+              <div class="need"><strong>Batch</strong>Bulk actions across the portfolio</div>
+              <div class="need"><strong>Continuity</strong>Handover between colleagues, firm memory</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="interaction">
+          <div class="lbl">How they interact with the conversational experience</div>
+          <p>
+            The interaction always starts from a <strong>free-form prompt</strong> with
+            typed @-mentions (company, employee, period, labor contract). The AI
+            responds with <strong>traceable reasoning</strong> and opens a
+            <strong>side canvas</strong> for artifacts worth manipulating &mdash; payslips,
+            F24 tax filings, payment batches, reports. Every action is reversible up until
+            an explicit save gate. The traditional UI remains accessible in a
+            parallel tab, for edge cases and for the audits required by regulation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2 · VISURA CAMERALE -->
+    <section class="screen-section">
+      <div class="wrap">
+        <div class="screen-head">
+          <h3>Every attachment becomes<br>a structured record.</h3>
+          <p>
+            Clients send data however they can &mdash; a Chamber of Commerce extract as a
+            PDF, an Excel sheet, a photo of a handwritten note. Instead of asking
+            them to change their habits, the workspace accepts any format and
+            <strong>proposes</strong> the structured record. Nothing is saved
+            without confirmation. The same pattern applies to company records,
+            employee records, and monthly data collection.
+          </p>
+        </div>
+
+        <div class="screen-frame" data-note="Company record from registry extract">
+          <div class="app canvas compact" style="height:560px">
+            <div class="topbar">
+              <span class="hb">&#9776;</span>
+              <div class="bm">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-6 6-6 9 0s6 6 9 0" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg>
+              </div>
+              <div class="name">Payroll<em>AI</em></div>
+              <div class="breadcrumb">New company record</div>
+              <div class="spacer"></div>
+              <div class="chip">Bianchi Studio <span class="dt"></span></div>
+            </div>
+            <div class="main chat">
+              <div class="file-chip"><span class="ic">&#128196;</span> Company registry extract... <small style="margin-left:4px">500kb</small></div>
+              <div class="bubble-user">Add this company to the records</div>
+              <div class="ai">
+                I've extracted the company details recognized as
+                <strong>"Rossi S.r.l."</strong> from the registry extract.
+              </div>
+              <div class="ref-card">
+                <span class="ic">&#128196;</span>
+                <span>Data extraction from Registry Extract - Azienda srl.pdf</span>
+                <span class="aitag">+AI</span>
+              </div>
+              <div class="summary-box">
+                <strong>Summary:</strong><br>
+                &middot; I've extracted the data, ready for review<br>
+                &middot; You can edit the fields directly before saving
+              </div>
+            </div>
+            <div class="canvas-panel" style="flex-direction:row;gap:16px;padding:14px">
+              <div style="flex:1;display:flex;flex-direction:column">
+                <div class="cp-head"><span class="cp-title">Preview</span></div>
+                <div class="doc-preview" style="flex:1">
+                  <div class="page">
+                    <div class="stripe"></div>
+                    <div class="ln"></div><div class="ln"></div><div class="ln short"></div>
+                    <div class="ln" style="margin-top:8px"></div><div class="ln"></div><div class="ln short"></div>
+                  </div>
+                  <div class="pager">Page 1 of 10</div>
+                </div>
+              </div>
+              <div style="flex:1.1;display:flex;flex-direction:column">
+                <div class="cp-head"><span class="cp-title">Company Record</span></div>
+                <div class="field-table">
+                  <div class="fr"><span class="k">Company name</span><span class="v">Rossi S.r.l</span></div>
+                  <div class="fr"><span class="k">Registered address</span><span class="v">Via Inama 13/B, 20133 Milano (MI)</span></div>
+                  <div class="fr"><span class="k">PEC email</span><span class="v">rossiw@pec.it</span></div>
+                  <div class="fr"><span class="k">Tax code &amp; reg. no.</span><span class="v">12345678901</span></div>
+                  <div class="fr"><span class="k">VAT number</span><span class="v">12345678901</span></div>
+                  <div class="fr"><span class="k">ATECO code</span><span class="v">62.01</span></div>
+                  <div class="fr"><span class="k">Incorporation date</span><span class="v">03/11/2025</span></div>
+                  <div class="fr"><span class="k">INPS contribution code</span><span class="v" style="color:var(--muted);font-style:italic">to be entered</span></div>
+                  <div class="fr"><span class="k">Status</span><span class="v" style="color:var(--green)">Active</span></div>
+                </div>
+                <div class="field-actions">
+                  <span class="btn ghost">Cancel</span>
+                  <span class="btn solid">Confirm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote">
+          <span class="qt">It's a great feature, genuinely interesting &mdash; the registry extract is read automatically and the fields are ready to confirm. You'd also expect a direct link to the Chamber of Commerce and the tax authority.</span>
+          <span class="attr">Payroll consultant &middot; 200+ employee firm</span>
+        </div>
+
+        <div class="screen-detail">
+          <div class="txt">
+            <p>
+              The three-column pattern is borrowed from other products in
+              regulated industries &mdash; source document on the left, reasoning and
+              summary in the center, editable structured record on the right.
+              Every extracted value points explicitly back to the part of the
+              document it came from.
+            </p>
+          </div>
+          <div>
+            <ul class="bullets">
+              <li><strong>Explicit save gate</strong>Even when the AI is confident, saving still requires a click. Cost: one extra step. Benefit: no silent writes to the company registry.</li>
+              <li><strong>Missing fields flagged</strong>The INPS contribution code isn't in the registry extract. The system marks it <em>"to be entered"</em> instead of guessing. No hallucination tolerated on regulated data.</li>
+              <li><strong>Inline editability</strong>Every field is editable before saving. The AI proposes, the consultant decides.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4 · POST-PAGA -->
+    <section class="screen-section">
+      <div class="wrap">
+        <div class="screen-head">
+          <h3>Every compliance step<br>on one screen.</h3>
+          <p>
+            Post-payroll &mdash; salary transfers, F24 tax filings, social security
+            bodies, UniEmens &mdash; has historically been the most fragmented moment of
+            the cycle, with four separate forms to navigate in sequence. The
+            workspace condenses it into a single checklist screen showing the
+            status of every step, so the operator can <strong>see where the cycle
+            stands at a glance</strong> and proceed without changing context.
+          </p>
+        </div>
+
+        <div class="screen-frame" data-note="Post-payroll · single screen">
+          <div class="app compact" style="height:520px">
+            <div class="topbar">
+              <span class="hb">&#9776;</span>
+              <div class="bm">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-6 6-6 9 0s6 6 9 0" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg>
+              </div>
+              <div class="name">Payroll<em>AI</em></div>
+              <div class="breadcrumb">Generate employee transfers</div>
+              <div class="spacer"></div>
+              <div class="chip">Bianchi Studio <span class="dt"></span></div>
+            </div>
+            <div class="main chat" style="align-items:center;max-width:520px;margin:0 auto;width:100%">
+              <div class="bubble-user">Start the post-payroll tasks for Rossi S.r.l.</div>
+              <div class="ai" style="align-self:stretch">
+                I've prepared a summary of the tasks to complete for <strong>Rossi S.r.l.</strong>:
+              </div>
+              <div class="checklist" style="align-self:stretch">
+                <div class="ch-head">
+                  <div class="l">Post-payroll checks</div>
+                  <div class="r">FEB 2026 &middot; 4 employees</div>
+                </div>
+                <div class="ch-row">
+                  <div class="l">
+                    <span class="bullet done"></span>
+                    <div><strong>Salary transfers</strong><small>4 employees &middot; net pay due</small></div>
+                  </div>
+                  <div class="r">
+                    <span class="tag" style="background:#F0F7EB;color:var(--green)">Generated &middot; &euro;8,619.10</span>
+                    <span class="action">Open</span>
+                  </div>
+                </div>
+                <div class="ch-row">
+                  <div class="l">
+                    <span class="bullet active"></span>
+                    <div><strong>F24 generation &amp; filing</strong><small>Tax payments &middot; reconciliation in progress</small></div>
+                  </div>
+                  <div class="r">
+                    <span class="tag warn">In progress</span>
+                    <span class="action">Proceed</span>
+                  </div>
+                </div>
+                <div class="ch-row">
+                  <div class="l">
+                    <span class="bullet"></span>
+                    <div><strong>Social security transfers</strong><small>Funds and schemes to calculate</small></div>
+                  </div>
+                  <div class="r">
+                    <span class="tag">To generate</span>
+                    <span class="action">Proceed</span>
+                  </div>
+                </div>
+                <div class="ch-row">
+                  <div class="l">
+                    <span class="bullet"></span>
+                    <div><strong>UniEmens generation &amp; filing</strong><small>XML file to generate</small></div>
+                  </div>
+                  <div class="r">
+                    <span class="tag">To generate</span>
+                    <span class="action">Proceed</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ai" style="align-self:stretch">
+                If a payslip or transfer changes, <strong>the F24 and UniEmens filings update automatically</strong> &mdash; with an explicit notification to the consultant.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote">
+          <span class="qt">One of the most appreciated processes in the whole product. Pure gold. The strength is that it all runs on a single screen, without switching from one form to another &mdash; fast, fluid.</span>
+          <span class="attr">Payroll consultant &middot; 200+ employee firm</span>
+        </div>
+
+        <div class="screen-detail">
+          <div class="txt">
+            <p>
+              Post-payroll emerged in discovery as the moment with the biggest
+              perceived value gap. Recomposing compliance steps into a single view
+              turned out to be the most-voted intervention across both personas.
+              The step sequence is customizable to reflect each firm's habits.
+            </p>
+          </div>
+          <div>
+            <ul class="bullets">
+              <li><strong>Customizable order</strong>The sequence of compliance steps isn't fixed &mdash; every firm reorders it. F24 can come before or after social security transfers, depending on habits.</li>
+              <li><strong>Cascading updates</strong>A change to a payslip automatically updates F24 and UniEmens. The consultant is notified, not surprised. A silent recalculation would have been faster but less auditable.</li>
+              <li><strong>Selective deferral</strong>Some steps (social security transfers) can be left for later without blocking the cycle. The workflow tolerates interruptions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 5 · REPORT COSTI -->
+    <section class="screen-section">
+      <div class="wrap">
+        <div class="screen-head">
+          <h3>On-demand reports<br>for advisory work.</h3>
+          <p>
+            A payroll consultant doesn't live on the payroll cycle alone &mdash; they
+            also live on the value they can show the client. The workspace
+            generates <strong>quarterly reports</strong>, labor cost analysis, tax
+            incentive simulations, regulatory update notices. These are documents
+            ready to send to the client, with the firm's branding and the
+            consultant's signature. The template is customizable per company.
+          </p>
+        </div>
+
+        <div class="screen-frame" data-note="Quarterly cost report">
+          <div class="app canvas compact" style="height:520px">
+            <div class="topbar">
+              <span class="hb">&#9776;</span>
+              <div class="bm">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-6 6-6 9 0s6 6 9 0" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg>
+              </div>
+              <div class="name">Payroll<em>AI</em></div>
+              <div class="breadcrumb">Cost trend January - March 2026</div>
+              <div class="spacer"></div>
+              <div class="chip">Bianchi Studio <span class="dt"></span></div>
+            </div>
+            <div class="main chat">
+              <div class="bubble-user">I want to see the cost trend for Rossi s.r.l, January-March 2026.</div>
+              <div class="ai">
+                I've generated the quarterly cost report for <strong>Rossi s.r.l.</strong>,
+                for the period January&ndash;March 2026. I've applied the company's custom report template.
+              </div>
+              <div class="reasoning">Reasoning</div>
+              <div class="ref-card">
+                <span class="ic">&#10022;</span>
+                <span>Quarterly cost report<small>Azienda SRL</small></span>
+                <span class="aitag">+AI</span>
+              </div>
+              <div class="summary-box">
+                <strong>Summary:</strong><br>
+                &middot; Total labor cost: <strong>&euro;48,920.30</strong> (+3.2% vs Q4 2025)<br>
+                &middot; Gross pay: <strong>&euro;32,180.00</strong> &middot; INPS contributions: <strong>&euro;10,440.20</strong> &middot; Severance (TFR): <strong>&euro;4,100.10</strong>
+              </div>
+            </div>
+            <div class="canvas-panel" style="padding:12px">
+              <div class="report-doc">
+                <div class="r-head">
+                  <div>
+                    <div class="r-brand">Bianchi Studio</div>
+                    <div class="r-brand"><em>Labor cost report &middot; Q1 2026</em></div>
+                  </div>
+                  <div class="r-info">Rossi S.r.l.<br>VAT 12345678901</div>
+                </div>
+                <div class="r-title">Q1 cost trend</div>
+                <div class="r-body">
+                  The quarter's overall labor cost totals
+                  <strong style="color:var(--ink)">&euro;48,920.30</strong>, up 3.2%
+                  versus Q4 2025.
+                </div>
+                <div class="r-chart">
+                  <div class="r-bar">
+                    <div class="r-lbl">January</div>
+                    <div class="r-track">
+                      <div class="sg a" style="width:36%"></div>
+                      <div class="sg b" style="width:24%"></div>
+                      <div class="sg c" style="width:15%"></div>
+                    </div>
+                    <div class="r-val">&euro;17,840</div>
+                  </div>
+                  <div class="r-bar">
+                    <div class="r-lbl">February</div>
+                    <div class="r-track">
+                      <div class="sg a" style="width:28%"></div>
+                      <div class="sg b" style="width:18%"></div>
+                      <div class="sg c" style="width:12%"></div>
+                    </div>
+                    <div class="r-val">&euro;13,520</div>
+                  </div>
+                  <div class="r-bar">
+                    <div class="r-lbl">March</div>
+                    <div class="r-track">
+                      <div class="sg a" style="width:22%"></div>
+                      <div class="sg b" style="width:14%"></div>
+                      <div class="sg c" style="width:8%"></div>
+                    </div>
+                    <div class="r-val">&euro;9,500</div>
+                  </div>
+                </div>
+                <div style="font-size:9px;color:var(--muted);text-align:right;font-family:'JetBrains Mono',monospace;letter-spacing:.06em">
+                  &#9642; Gross pay &nbsp; &#9642; INPS &nbsp; &#9642; Severance
+                </div>
+              </div>
+              <div class="cp-cta" style="margin-top:12px">Send to client as attachment</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote">
+          <span class="qt">It's a tool considered very useful &mdash; people would like variations like reports with custom KPIs per company, look-ups of regulations and tax incentives, and automated sending.</span>
+          <span class="attr">Discovery interviews &middot; 2 payroll consultants</span>
+        </div>
+
+        <div class="screen-detail">
+          <div class="txt">
+            <p>
+              In the current workflow, generating a quarterly report requires
+              manual exports, formatting in Excel, rewriting in Word. The time
+              between the client's request and the finished document is measured
+              in hours. The workspace compresses it to a single prompt, while
+              keeping editorial control over the result.
+            </p>
+          </div>
+          <div>
+            <ul class="bullets">
+              <li><strong>The firm's template</strong>Branding, sections, and disclaimers come from the firm's saved template. It's not a generic AI report &mdash; it's the firm's report, generated by AI.</li>
+              <li><strong>Debatable prose, verifiable data</strong>The commentary narrative is generated; every figure is clickable back to its source (payslip, F24, transaction). Editorial + auditable.</li>
+              <li><strong>Preview before sending</strong>The report doesn't go out automatically. Preview in the canvas, explicit send. The gate is preserved.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 6 · CEDOLINO SMART -->
+    <section class="screen-section">
+      <div class="wrap">
+        <div class="screen-head">
+          <h3>The payslip,<br>rethought to be read.</h3>
+          <p>
+            A problem that surfaced repeatedly in interviews: <strong>consultants
+            and payroll specialists spend hours every month explaining payslip
+            line items to employees</strong>. The traditional payslip is designed
+            to be calculated, not to be read &mdash; dense columns of codes,
+            abbreviations, amounts without context. Smart Payslip reformats the
+            same information into an <strong>understandable summary</strong>, with
+            an explanatory narrative generated automatically for each case. It
+            reduces the support requests the firm's clients send in.
+          </p>
+        </div>
+
+        <div class="screen-frame" data-note="Smart Payslip">
+          <div class="app canvas compact" style="height:560px">
+            <div class="topbar">
+              <span class="hb">&#9776;</span>
+              <div class="bm">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12c3-6 6-6 9 0s6 6 9 0" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg>
+              </div>
+              <div class="name">Payroll<em>AI</em></div>
+              <div class="breadcrumb">March 2026 payslip processing</div>
+              <div class="spacer"></div>
+              <div class="chip">Bianchi Studio <span class="dt"></span></div>
+            </div>
+            <div class="main chat">
+              <div class="bubble-user">Yes, go ahead with full payslip processing</div>
+              <div class="ai">Sure, here are the drafts of the 5 payslips for <strong>Rossi S.r.l.</strong> to review:</div>
+              <div class="draft-list">
+                <div class="ref-card"><span class="ic">&#129534;</span><span>Bianchi Marco 03-2026<small>Draft &middot; To review</small></span><span class="aitag">+AI</span></div>
+                <div class="ref-card"><span class="ic">&#129534;</span><span>Verdi Luca 03-2026<small>Draft &middot; To review</small></span><span class="aitag">+AI</span></div>
+                <div class="ref-card"><span class="ic">&#129534;</span><span>Neri Anna 03-2026<small>Draft &middot; To review</small></span><span class="aitag">+AI</span></div>
+                <div class="ref-card"><span class="ic">&#129534;</span><span>Rossi Mario 03-2026<small>Draft &middot; To review</small></span><span class="aitag">+AI</span></div>
+                <div class="ref-card"><span class="ic">&#129534;</span><span>Colombo Sara 03-2026<small>Draft &middot; To review</small></span><span class="aitag">+AI</span></div>
+              </div>
+              <div class="ai">Review the drafts before saving them. If you'd like, I can start reconciliation for submission.</div>
+            </div>
+            <div class="canvas-panel" style="padding:14px">
+              <div class="payslip">
+                <div class="tabs">
+                  <span class="tab active">Smart payslip</span>
+                  <span class="tab">Traditional payslip</span>
+                </div>
+                <div class="ps-head">
+                  <div>
+                    <div class="ps-title">Payslip <em>Smart</em></div>
+                    <div style="font-size:10px;color:var(--muted);margin-top:2px">Bianchi Marco &middot; March 2026</div>
+                  </div>
+                  <div class="ps-meta">EMP. ID 114531<br>Tax code BBDMTT96C28E405C</div>
+                </div>
+                <div class="net">
+                  <div>
+                    <div class="l">Net pay</div>
+                    <div class="amt">&euro; 2,172.26</div>
+                  </div>
+                  <div class="r">Download<br>PDF</div>
+                </div>
+                <div class="cols">
+                  <div class="cell">
+                    <div class="k">Gross pay</div>
+                    <div class="v">&euro; 2,333.45</div>
+                  </div>
+                  <div class="cell">
+                    <div class="k">Deductions</div>
+                    <div class="v neg">&minus; &euro; 161.19</div>
+                  </div>
+                  <div class="cell">
+                    <div class="k">Net severance (TFR)</div>
+                    <div class="v pos">&euro; 446.26</div>
+                  </div>
+                  <div class="cell">
+                    <div class="k">Bonus L.207/24</div>
+                    <div class="v pos">&euro; 882.76</div>
+                  </div>
+                </div>
+                <div class="narrative">
+                  <div class="tag">Personalized summary</div>
+                  <p>
+                    This is the March 2026 payslip. Net pay is <strong>&euro; 2,172.26</strong>, calculated starting from gross pay for the period, net of social security and tax deductions. It includes this month's severance (TFR) accrual and the L.207/24 tax bonus applied to your pay.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote">
+          <span class="qt">Fantastic&hellip; this is really nice, absolutely. The final descriptive paragraph on the legal line items solves the difficulty of explaining to companies and employees the choices made because of constant regulatory changes.</span>
+          <span class="attr">Payroll consultant &middot; mixed portfolio</span>
+        </div>
+
+        <div class="screen-detail">
+          <div class="txt">
+            <p>
+              The feature is among the most-voted to come out of the research. It
+              answers two needs at once &mdash; the consultant's (fewer clarification
+              requests from employees) and the employee's (understanding what
+              they're receiving). The traditional payslip stays available for
+              compliance; Smart is the artifact you send.
+            </p>
+          </div>
+          <div>
+            <ul class="bullets">
+              <li><strong>Editorial yet traceable</strong>The narrative is AI-generated but every figure cited is anchored to the traditional payslip, verifiable. No number appears without a source.</li>
+              <li><strong>Both formats coexist</strong>Smart doesn't replace the official payslip &mdash; it accompanies it. Anyone who needs the classic PDF finds it in the adjacent tab.</li>
+              <li><strong>Customizable by the consultant</strong>The consultant can review the tone and length of the summary before sending, or disable it for companies that prefer the standard format.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 · AI-NATIVE FUNDAMENTALS -->
+    <section class="rules-section">
+      <div class="wrap">
+        <div class="head">
+          <h2 style="font-size:44px;max-width:22ch">The design rules<br>that held the work together.</h2>
+          <p>
+            Principles applied before every design sprint for
+            <strong>AI-native</strong> products.
+          </p>
+        </div>
+
+        <div class="rules-row">
+          <div class="rules-grid four">
+            <div class="rule">
+              <div class="num">01</div>
+              <h4>Designing for intent</h4>
+              <p>Intent &rarr; outcome &rarr; refinement. The flow starts from the goal, not from the screen.</p>
+            </div>
+            <div class="rule">
+              <div class="num">02</div>
+              <h4>AI direct</h4>
+              <p>Chat / command interface as the primary entry point.</p>
+            </div>
+            <div class="rule">
+              <div class="num">03</div>
+              <h4>AI assisted UI</h4>
+              <p>Suggestions and prompts embedded within the product's UI.</p>
+            </div>
+            <div class="rule">
+              <div class="num">04</div>
+              <h4>Operational UI</h4>
+              <p>Traditional UI available as a fallback for edge cases and audits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 
   <footer class="site-footer footer">
     <div class="footer-inner">
@@ -134,6 +1080,6 @@
       <a href="https://linkedin.com/in/dursomichela" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>
-  <script src="../assets/js/nav.js?v=20260625c"></script>
+  <script src="../assets/js/nav.js?v=20260710b"></script>
 </body>
 </html>
