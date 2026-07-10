@@ -32,7 +32,7 @@
     .timeline-more { margin-top: 52px; }
 
     .testimonials { margin-top: 56px; max-width: 880px; }
-    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 380px)); gap: 16px; margin-top: 20px; justify-content: start; }
     .testimonial-card {
       background: #fff;
       border: 1px solid var(--rule);
@@ -105,16 +105,7 @@
           <div class="testimonial-name">Pasquale</div>
           <div class="testimonial-role">Project Manager</div>
         </div>
-        <div class="testimonial-card">
-          <p class="testimonial-quote">&ldquo;[Placeholder] A rare ability to connect design, product, and engineering. Projects move faster with her involved.&rdquo;</p>
-          <div class="testimonial-name">Name Surname</div>
-          <div class="testimonial-role">Role &middot; Company</div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-quote">&ldquo;[Placeholder] Curious, empathetic, precise. One of the most reliable designers I&rsquo;ve worked with.&rdquo;</p>
-          <div class="testimonial-name">Name Surname</div>
-          <div class="testimonial-role">Role &middot; Company</div>
-        </div>
+        <!-- TODO: add two more real testimonials here; placeholder cards hidden until then -->
       </div>
     </section>
 
