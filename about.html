@@ -32,8 +32,26 @@
     .timeline-more { margin-top: 52px; }
 
     .testimonials { margin-top: 56px; max-width: 880px; }
-    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 380px)); gap: 16px; margin-top: 20px; justify-content: start; }
+    /* Single-row scrollable carousel */
+    .testimonial-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 16px;
+      margin-top: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-padding: 2px;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--rule) transparent;
+    }
+    .testimonial-grid::-webkit-scrollbar { height: 6px; }
+    .testimonial-grid::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+    .testimonial-grid::-webkit-scrollbar-track { background: transparent; }
     .testimonial-card {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
       background: #fff;
       border: 1px solid var(--rule);
       border-radius: 14px;
@@ -55,7 +73,7 @@
     .testimonial-role { font-family: var(--sans); font-size: 13px; color: var(--muted); margin-top: -8px; }
 
     @media (max-width: 640px) {
-      .testimonial-grid { grid-template-columns: 1fr; }
+      .testimonial-card { flex-basis: 84%; }
     }
   </style>
 </head>
@@ -99,13 +117,22 @@
 
     <section class="testimonials">
       <h2>Someone said about me</h2>
-      <div class="testimonial-grid">
+      <div class="testimonial-grid" tabindex="0" role="region" aria-label="Testimonials, scroll horizontally">
+         <div class="testimonial-card">
+          <p class="testimonial-quote">&ldquo;Working with Michela has been a real pleasure. She listens carefully to every need and always brings concrete, well-thought-out ideas to the table. Her ability to turn feedback into effective solutions makes every collaboration smoother and more impactful.&rdquo;</p>
+          <div class="testimonial-name">Sandro</div>
+          <div class="testimonial-role">HR Product Delivery Lead</div>
+        </div>
         <div class="testimonial-card">
           <p class="testimonial-quote">&ldquo;Michela stands out for precision, reliability, and dedication, but also for her ability to bring new perspectives and turn an idea into something even more effective. She often proposed design concepts we hadn&rsquo;t considered. She doesn&rsquo;t just execute a brief, she enriches it with product and business thinking, and attention to detail.&rdquo;</p>
           <div class="testimonial-name">Pasquale</div>
           <div class="testimonial-role">Project Manager</div>
         </div>
-        <!-- TODO: add two more real testimonials here; placeholder cards hidden until then -->
+        <div class="testimonial-card">
+          <p class="testimonial-quote">&ldquo;Working with Michela has been a real pleasure. She listens carefully to every need and always brings concrete, well-thought-out ideas to the table. Her ability to turn feedback into effective solutions makes every collaboration smoother and more impactful.&rdquo;</p>
+          <div class="testimonial-name">Sandro</div>
+          <div class="testimonial-role">HR Product Delivery Lead</div>
+        </div>
       </div>
     </section>
 

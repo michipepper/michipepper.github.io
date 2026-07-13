@@ -402,6 +402,7 @@ a.cta:hover {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 640px) {
+  html, body { overflow-x: hidden; }
   body { font-size: 16px; }
   .hero-name { font-size: 2.4rem; }
   .case-title { font-size: 2rem; }
@@ -554,12 +555,14 @@ button:focus-visible,
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.28s ease, opacity 0.2s ease, margin 0.28s ease;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .work-list.open {
   max-height: 360px;
   opacity: 1;
+  transform: translateY(0);
   margin: 6px 0 4px;
 }
 
@@ -791,28 +794,38 @@ button:focus-visible,
   .kpi-grid { grid-template-columns: 1fr; }
 }
 
-/* Back-to-top chevron — injected on every page by nav.js */
-/* Back-to-top: always present as a small dot; opens into a full chevron on scroll */
+/* Back-to-top: always present as a small dot; opens into a full chevron on scroll.
+   The circle is a ::before scaled with transform (no width/height layout animation),
+   inside a fixed 44px tap target. */
 .to-top {
   position: fixed;
   right: 28px;
   bottom: 28px;
-  width: 12px;
-  height: 12px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   padding: 0;
-  background: #111;
+  background: transparent;
   color: #fff;
-  border: 1px solid #111;
-  border-radius: 50%;
-  box-shadow: 0 3px 10px rgba(20, 26, 34, 0.22);
+  border: 0;
   cursor: pointer;
-  overflow: hidden;
-  transition: width 0.25s ease, height 0.25s ease, box-shadow 0.25s ease, background 0.15s ease, border-color 0.15s ease;
   z-index: 100;
 }
+.to-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 0 6px 20px rgba(20, 26, 34, 0.22);
+  transform: scale(0.27);
+  transition: transform 0.25s ease, background 0.15s ease;
+}
+.to-top.visible::before { transform: scale(1); }
+.to-top:hover::before { background: #000; }
 .to-top svg {
+  position: relative;
   width: 18px;
   height: 18px;
   display: block;
@@ -820,16 +833,10 @@ button:focus-visible,
   transform: scale(0.4);
   transition: opacity 0.2s ease, transform 0.25s ease;
 }
-.to-top.visible {
-  width: 44px;
-  height: 44px;
-  box-shadow: 0 6px 20px rgba(20, 26, 34, 0.22);
-}
 .to-top.visible svg {
   opacity: 1;
   transform: scale(1);
 }
-.to-top:hover { background: #000; border-color: #000; }
 .to-top:focus-visible { outline: 2px solid var(--link-hover); outline-offset: 2px; }
 
 @media (max-width: 640px) {
