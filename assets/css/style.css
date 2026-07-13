@@ -443,6 +443,16 @@ button:focus-visible,
   top: 8px;
 }
 
+/* Respect users who prefer reduced motion — near-instant, no smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ========== UTIL ========== */
 .subtle { color: var(--muted); }
 .pill {
@@ -656,14 +666,17 @@ button:focus-visible,
 }
 
 /* Cover image under each work entry (title + description above it) */
-.entry-cover { display: block; margin-top: 20px; }
+.entry-cover { display: block; margin-top: 20px; border-radius: 8px; overflow: hidden; }
 .entry-cover .img-placeholder { aspect-ratio: 16 / 9; }
 .entry-cover img {
   width: 100%;
   height: auto;
   border-radius: 8px;
   display: block;
+  transition: transform 0.45s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
+.entry-cover:hover img,
+.entry-cover:focus-visible img { transform: scale(1.035); }
 
 /* Figures inside a project case study */
 .project-figure { max-width: 640px; margin: 2.2rem 0; }

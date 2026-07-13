@@ -32,38 +32,41 @@
     .timeline-more { margin-top: 52px; }
 
     .testimonials { margin-top: 56px; max-width: 880px; }
-    /* Single-row scrollable carousel */
+    /* Testimonials carousel — single row, smooth horizontal scroll */
+    .testimonial-carousel { position: relative; margin-top: 20px; }
     .testimonial-grid {
       display: flex;
       flex-wrap: nowrap;
-      gap: 16px;
-      margin-top: 20px;
+      gap: 18px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      scroll-padding: 2px;
-      padding-bottom: 8px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--rule) transparent;
+      scroll-padding-left: 2px;
+      padding: 6px 2px 12px;
+      scrollbar-width: none;
     }
-    .testimonial-grid::-webkit-scrollbar { height: 6px; }
-    .testimonial-grid::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
-    .testimonial-grid::-webkit-scrollbar-track { background: transparent; }
+    .testimonial-grid::-webkit-scrollbar { display: none; }
     .testimonial-card {
       flex: 0 0 320px;
       scroll-snap-align: start;
       background: #fff;
       border: 1px solid var(--rule);
-      border-radius: 14px;
-      padding: 22px 20px;
+      border-radius: 16px;
+      padding: 26px 24px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(20, 26, 34, 0.09);
     }
     .testimonial-quote {
       font-family: var(--serif);
-      font-size: 15px;
-      line-height: 1.55;
+      font-size: 15.5px;
+      line-height: 1.6;
       color: var(--text);
       font-style: italic;
       margin-bottom: 0;
@@ -72,8 +75,54 @@
     .testimonial-name { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--text); }
     .testimonial-role { font-family: var(--sans); font-size: 13px; color: var(--muted); margin-top: -8px; }
 
+    /* edge fades — visible only when there's more to scroll toward */
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 12px;
+      width: 56px;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .testimonial-carousel::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    .testimonial-carousel::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+    .testimonial-carousel.can-left::before { opacity: 1; }
+    .testimonial-carousel.can-right::after { opacity: 1; }
+
+    /* prev / next controls */
+    .tcar-btn {
+      position: absolute;
+      top: calc(50% - 6px);
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(20, 26, 34, 0.10);
+      opacity: 0;
+      transition: opacity 0.2s ease, border-color 0.15s ease, transform 0.15s ease;
+      font-size: 19px; line-height: 1; padding: 0;
+    }
+    .tcar-btn.prev { left: -12px; }
+    .tcar-btn.next { right: -12px; }
+    .tcar-btn:hover { border-color: var(--text); }
+    .testimonial-carousel.can-left .tcar-btn.prev,
+    .testimonial-carousel.can-right .tcar-btn.next { opacity: 1; }
+    .tcar-btn:focus-visible { opacity: 1; outline: 2px solid var(--link-hover); outline-offset: 2px; }
+
     @media (max-width: 640px) {
       .testimonial-card { flex-basis: 84%; }
+      .testimonial-carousel::before, .testimonial-carousel::after { width: 32px; }
+    }
+    @media (hover: none) {
+      .tcar-btn { display: none; }
     }
   </style>
 </head>
@@ -117,6 +166,7 @@
 
     <section class="testimonials">
       <h2>Someone said about me</h2>
+      <div class="testimonial-carousel">
       <div class="testimonial-grid" tabindex="0" role="region" aria-label="Testimonials, scroll horizontally">
          <div class="testimonial-card">
           <p class="testimonial-quote">&ldquo;Working with Michela has been a real pleasure. She listens carefully to every need and always brings concrete, well-thought-out ideas to the table. Her ability to turn feedback into effective solutions makes every collaboration smoother and more impactful.&rdquo;</p>
@@ -133,6 +183,9 @@
           <div class="testimonial-name">Sandro</div>
           <div class="testimonial-role">HR Product Delivery Lead</div>
         </div>
+      </div>
+      <button class="tcar-btn prev" type="button" aria-label="Previous testimonials">&lsaquo;</button>
+      <button class="tcar-btn next" type="button" aria-label="Next testimonials">&rsaquo;</button>
       </div>
     </section>
 
@@ -152,5 +205,29 @@
     </div>
   </footer>
   <script src="assets/js/nav.js?v=20260710d"></script>
+  <script>
+    // Testimonials carousel — smooth prev/next + dynamic edge fades
+    (function () {
+      var car = document.querySelector('.testimonial-carousel');
+      if (!car) return;
+      var track = car.querySelector('.testimonial-grid');
+      var prev = car.querySelector('.tcar-btn.prev');
+      var next = car.querySelector('.tcar-btn.next');
+      function step() {
+        var card = track.querySelector('.testimonial-card');
+        return card ? card.getBoundingClientRect().width + 18 : track.clientWidth * 0.9;
+      }
+      function update() {
+        var max = track.scrollWidth - track.clientWidth - 1;
+        car.classList.toggle('can-left', track.scrollLeft > 1);
+        car.classList.toggle('can-right', track.scrollLeft < max);
+      }
+      if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
 </body>
 </html>
